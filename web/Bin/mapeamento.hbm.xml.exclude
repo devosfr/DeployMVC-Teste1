@@ -1,0 +1,1380 @@
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class xmlns="urn:nhibernate-mapping-2.2" name="CarrinhoOrcamento, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_carrinhoorcamento">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <bag cascade="all-delete-orphan" lazy="true" name="Itens">
+      <key>
+        <column name="idCarrinhoOrcamento" />
+      </key>
+      <one-to-many class="ItemCarrinhoOrcamento, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <property name="Referencia" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Referencia" length="300" />
+    </property>
+    <property name="DataCriacao" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="DataCriacao" length="300" />
+    </property>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="CategoriaImportacao, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_categoriaimportacao">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="CodigoImportacao" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="CodigoImportacao" length="300" />
+    </property>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="CategoriaProduto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_categoriaproduto">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Chave" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Chave" length="300" />
+    </property>
+    <property name="Visivel" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Visivel" length="300" />
+    </property>
+    <property name="CodigoImportacao" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="CodigoImportacao" length="300" />
+    </property>
+    <many-to-one class="SubSegmentoProduto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="SubSegmento">
+      <column name="idSubSegmentoProduto" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Destaque, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_destaque">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Chave" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Chave" length="300" />
+    </property>
+    <property name="Visivel" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Visivel" length="300" />
+    </property>
+    <property name="Imagem" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Imagem" length="300" />
+    </property>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="ItemCarrinhoOrcamento, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_itemcarrinhoorcamento">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Quantidade" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Quantidade" length="300" />
+    </property>
+    <property name="Valor" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Valor" length="300" />
+    </property>
+    <many-to-one class="Modelos.Produto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Produto">
+      <column name="idProduto" />
+    </many-to-one>
+    <many-to-one class="Modelos.Tamanho, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Tamanho">
+      <column name="idTamanho" />
+    </many-to-one>
+    <many-to-one class="Modelos.Cor, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Cor">
+      <column name="idCor" />
+    </many-to-one>
+    <many-to-one class="CarrinhoOrcamento, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Carrinho">
+      <column name="idCarrinhoOrcamento" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Marca, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_marca">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Chave" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Chave" length="300" />
+    </property>
+    <property name="Visivel" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Visivel" length="300" />
+    </property>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.Album, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_album">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <bag cascade="all-delete-orphan" lazy="true" name="Imagens">
+      <key>
+        <column name="idAlbum" />
+      </key>
+      <one-to-many class="Modelos.ImagemProduto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Principal" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Principal" length="300" />
+    </property>
+    <property name="Ativo" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Ativo" length="300" />
+    </property>
+    <many-to-one class="Modelos.Cor, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Cor">
+      <column name="idCor" />
+    </many-to-one>
+    <many-to-one class="Modelos.Produto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Produto">
+      <column name="idProduto" />
+    </many-to-one>
+    <many-to-one class="Modelos.ImagemProduto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Primeira">
+      <column name="idImagemProduto" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.Bairro, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_bairro">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <many-to-one class="Modelos.Cidade, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Cidade">
+      <column name="idCidade" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.CampoImportacao, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_campoimportacao">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="NomeCampo" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="NomeCampo" length="300" />
+    </property>
+    <property name="NovoNome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="NovoNome" length="300" />
+    </property>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.CampoTela, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_campotela">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="destino" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="destino" length="300" />
+    </property>
+    <property name="nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="nome" length="300" />
+    </property>
+    <property name="classe" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="classe" length="300" />
+    </property>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.Carrinho, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_carrinho">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <bag cascade="all-delete-orphan" lazy="true" name="Itens">
+      <key>
+        <column name="idCarrinho" />
+      </key>
+      <one-to-many class="Modelos.ItemCarrinho, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <property name="Referencia" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Referencia" length="300" />
+    </property>
+    <property name="DataCriacao" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="DataCriacao" length="300" />
+    </property>
+    <property name="ModoFrete" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ModoFrete" length="300" />
+    </property>
+    <property name="ModoPagamento" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ModoPagamento" length="300" />
+    </property>
+    <many-to-one class="Modelos.Endereco, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Endereco">
+      <column name="idEndereco" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.CategoriaVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_categoriavo">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <bag cascade="all-delete-orphan" lazy="true" name="imagens">
+      <key>
+        <column name="idCategoriaVO" />
+      </key>
+      <one-to-many class="Modelos.ImagemCategoriaVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <property name="nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="nome" length="300" />
+    </property>
+    <property name="imagem" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="imagem" length="300" />
+    </property>
+    <property name="descricao" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="descricao" length="300" />
+    </property>
+    <property name="ordem" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ordem" length="300" />
+    </property>
+    <property name="chave" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="chave" length="300" />
+    </property>
+    <property name="visivel" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="visivel" length="300" />
+    </property>
+    <many-to-one class="Modelos.Tela, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="tela">
+      <column name="idTela" />
+    </many-to-one>
+    <many-to-one class="Modelos.SegmentoFilhoVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="segFilho">
+      <column name="idSegmentoFilhoVO" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.Chamado, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_chamado">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <bag cascade="all-delete-orphan" lazy="true" name="Respostas">
+      <key>
+        <column name="idChamado" />
+      </key>
+      <one-to-many class="Modelos.Resposta, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <property name="Assunto" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Assunto" length="300" />
+    </property>
+    <property name="Codigo" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Codigo" length="300" />
+    </property>
+    <property name="NomeProduto" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="NomeProduto" length="300" />
+    </property>
+    <property name="Modelo" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Modelo" length="300" />
+    </property>
+    <property name="Serie" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Serie" length="300" />
+    </property>
+    <property name="NF" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="NF" length="300" />
+    </property>
+    <property name="DataCompra" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="DataCompra" length="300" />
+    </property>
+    <property name="Descricao" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Descricao" length="300" />
+    </property>
+    <property name="Status" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Status" length="300" />
+    </property>
+    <property name="DataSolicitacao" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="DataSolicitacao" length="300" />
+    </property>
+    <property name="DataFechamento" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="DataFechamento" length="300" />
+    </property>
+    <many-to-one class="Modelos.Cliente, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Cliente">
+      <column name="idCliente" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.Cidade, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_cidade">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Status" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Status" length="300" />
+    </property>
+    <many-to-one class="Modelos.Estado, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Estado">
+      <column name="idEstado" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.Cliente, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_cliente">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <bag cascade="all-delete-orphan" lazy="true" name="Enderecos">
+      <key>
+        <column name="idCliente" />
+      </key>
+      <one-to-many class="Modelos.Endereco, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <bag cascade="all-delete-orphan" lazy="true" name="Conta">
+      <key>
+        <column name="idCliente" />
+      </key>
+      <one-to-many class="Modelos.MovimentoDeConta, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <set cascade="all-delete-orphan" lazy="true" name="Cupons">
+      <key>
+        <column name="idCliente" />
+      </key>
+      <one-to-many class="Modelos.Cupom, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </set>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Sobrenome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Sobrenome" length="300" />
+    </property>
+    <property name="CPF" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="CPF" length="300" />
+    </property>
+    <property name="CNPJ" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="CNPJ" length="300" />
+    </property>
+    <property name="Genero" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Genero" length="300" />
+    </property>
+    <property name="Status" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Status" length="300" />
+    </property>
+    <property name="DataCadastro" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="DataCadastro" length="300" />
+    </property>
+    <property name="DataDesativacao" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="DataDesativacao" length="300" />
+    </property>
+    <property name="Observacoes" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Observacoes" length="300" />
+    </property>
+    <property name="Telefone" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Telefone" length="300" />
+    </property>
+    <property name="Email" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Email" length="300" />
+    </property>
+    <property name="Senha" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Senha" length="300" />
+    </property>
+    <property name="ParticipanteBonificacao" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ParticipanteBonificacao" length="300" />
+    </property>
+    <property name="DataParticipacaoBonificacao" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="DataParticipacaoBonificacao" length="300" />
+    </property>
+    <many-to-one class="Modelos.Cupom, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="CupomCompra">
+      <column name="idCupom" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.Cor, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_cor">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <bag cascade="all" name="Produtos" table="cor_produto">
+      <key>
+        <column name="Cor_id" />
+      </key>
+      <many-to-many class="Modelos.Produto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <column name="Produto_id" />
+      </many-to-many>
+    </bag>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Chave" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Chave" length="300" />
+    </property>
+    <property name="Codigo" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Codigo" length="300" />
+    </property>
+    <property name="Imagem" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Imagem" length="300" />
+    </property>
+    <property name="Visivel" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Visivel" length="300" />
+    </property>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.Cupom, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_cupom">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <bag cascade="all-delete-orphan" lazy="true" name="Descontos">
+      <key>
+        <column name="idCupom" />
+      </key>
+      <one-to-many class="Modelos.DescontoCupom, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <property name="DataCriacao" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="DataCriacao" length="300" />
+    </property>
+    <property name="Codigo" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Codigo" length="300" />
+    </property>
+    <property name="Ativo" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Ativo" length="300" />
+    </property>
+    <property name="Modelo" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Modelo" length="300" />
+    </property>
+    <many-to-one class="Modelos.Cliente, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Cliente">
+      <column name="idCliente" />
+    </many-to-one>
+    <many-to-one class="Modelos.Cupom, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="CupomPai">
+      <column name="idCupom" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.DadoVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_dadovo">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <bag cascade="all-delete-orphan" lazy="true" name="listaFotos">
+      <key>
+        <column name="idDadoVO" />
+      </key>
+      <one-to-many class="Modelos.ImagemDadoVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <property name="referencia" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="referencia" length="300" />
+    </property>
+    <property name="data" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="data" length="300" />
+    </property>
+    <property name="nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="nome" length="300" />
+    </property>
+    <property name="keywords" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="keywords" length="300" />
+    </property>
+    <property name="chave" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="chave" length="300" />
+    </property>
+    <property name="destaque" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="destaque" length="300" />
+    </property>
+    <property name="descricao" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="descricao" length="300" />
+    </property>
+    <property name="resumo" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="resumo" length="300" />
+    </property>
+    <property name="valor" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="valor" length="300" />
+    </property>
+    <property name="ordem" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ordem" length="300" />
+    </property>
+    <property name="meta" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="meta" length="300" />
+    </property>
+    <property name="visivel" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="visivel" length="300" />
+    </property>
+    <many-to-one class="Modelos.SegmentoPaiVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="segPai">
+      <column name="idSegmentoPaiVO" />
+    </many-to-one>
+    <many-to-one class="Modelos.SegmentoFilhoVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="segFilho">
+      <column name="idSegmentoFilhoVO" />
+    </many-to-one>
+    <many-to-one class="Modelos.CategoriaVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="categoria">
+      <column name="idCategoriaVO" />
+    </many-to-one>
+    <many-to-one class="Modelos.Tela, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="tela">
+      <column name="idTela" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.DescontoCupom, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_descontocupom">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Desconto" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Desconto" length="300" />
+    </property>
+    <property name="Tipo" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Tipo" length="300" />
+    </property>
+    <property name="Ativo" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Ativo" length="300" />
+    </property>
+    <property name="Comissao" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Comissao" length="300" />
+    </property>
+    <many-to-one class="Modelos.Produto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Produto">
+      <column name="idProduto" />
+    </many-to-one>
+    <many-to-one class="Modelos.Cupom, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Cupom">
+      <column name="idCupom" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.Endereco, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_endereco">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Numero" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Numero" length="300" />
+    </property>
+    <property name="Complemento" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Complemento" length="300" />
+    </property>
+    <property name="Bairro" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Bairro" length="300" />
+    </property>
+    <property name="Logradouro" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Logradouro" length="300" />
+    </property>
+    <property name="CEP" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="CEP" length="300" />
+    </property>
+    <property name="Principal" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Principal" length="300" />
+    </property>
+    <many-to-one class="Modelos.Cidade, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Cidade">
+      <column name="idCidade" />
+    </many-to-one>
+    <many-to-one class="Modelos.Estado, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Estado">
+      <column name="idEstado" />
+    </many-to-one>
+    <many-to-one class="Modelos.Cliente, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Cliente">
+      <column name="idCliente" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.Estado, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_estado">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Sigla" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Sigla" length="300" />
+    </property>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.GrupoDePaginasVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_grupodepaginasvo">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <bag cascade="all-delete-orphan" lazy="true" name="paginas">
+      <key>
+        <column name="idGrupoDePaginasVO" />
+      </key>
+      <one-to-many class="Modelos.PaginaDeControleVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <bag cascade="all-delete-orphan" lazy="true" name="permissoes">
+      <key>
+        <column name="idGrupoDePaginasVO" />
+      </key>
+      <one-to-many class="Modelos.PermissaoGrupoDePaginasVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <property name="nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="nome" length="300" />
+    </property>
+    <property name="ordem" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ordem" length="300" />
+    </property>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.ImagemCategoriaVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_imagemcategoriavo">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Ordem" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Ordem" length="300" />
+    </property>
+    <many-to-one class="Modelos.CategoriaVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="categoria">
+      <column name="idCategoriaVO" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.ImagemDadoVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_imagemdadovo">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Ordem" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Ordem" length="300" />
+    </property>
+    <many-to-one class="Modelos.DadoVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="dado">
+      <column name="idDadoVO" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.ImagemProduto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_imagemproduto">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Ordem" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Ordem" length="300" />
+    </property>
+    <many-to-one class="Modelos.Album, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Album">
+      <column name="idAlbum" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.ImagemSegFilhoVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_imagemsegfilhovo">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Ordem" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Ordem" length="300" />
+    </property>
+    <many-to-one class="Modelos.SegmentoFilhoVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="segFilho">
+      <column name="idSegmentoFilhoVO" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.ImagemSegPaiVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_imagemsegpaivo">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Ordem" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Ordem" length="300" />
+    </property>
+    <many-to-one class="Modelos.SegmentoPaiVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="segPai">
+      <column name="idSegmentoPaiVO" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.InformacaoProduto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_informacaoproduto">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Texto" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Texto" length="300" />
+    </property>
+    <property name="Ordem" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Ordem" length="300" />
+    </property>
+    <property name="Visivel" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Visivel" length="300" />
+    </property>
+    <many-to-one class="Modelos.Produto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Produto">
+      <column name="idProduto" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.ItemCarrinho, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_itemcarrinho">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Quantidade" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Quantidade" length="300" />
+    </property>
+    <property name="Valor" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Valor" length="300" />
+    </property>
+    <many-to-one class="Modelos.Produto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Produto">
+      <column name="idProduto" />
+    </many-to-one>
+    <many-to-one class="Modelos.Tamanho, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Tamanho">
+      <column name="idTamanho" />
+    </many-to-one>
+    <many-to-one class="Modelos.Cor, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Cor">
+      <column name="idCor" />
+    </many-to-one>
+    <many-to-one class="Modelos.Carrinho, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Carrinho">
+      <column name="idCarrinho" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.ItemOrcamento, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_itemorcamento">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Referencia" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Referencia" length="300" />
+    </property>
+    <property name="Quantidade" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Quantidade" length="300" />
+    </property>
+    <many-to-one class="Modelos.Produto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Produto">
+      <column name="idProduto" />
+    </many-to-one>
+    <many-to-one class="Modelos.Tamanho, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Tamanho">
+      <column name="idTamanho" />
+    </many-to-one>
+    <many-to-one class="Modelos.Cor, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Cor">
+      <column name="idCor" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.ItemPedido, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_itempedido">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Peso" type="System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Peso" length="300" />
+    </property>
+    <property name="PrecoOriginal" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="PrecoOriginal" length="300" />
+    </property>
+    <property name="Preco" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Preco" length="300" />
+    </property>
+    <property name="Quantidade" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Quantidade" length="300" />
+    </property>
+    <many-to-one class="Modelos.Produto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Produto">
+      <column name="idProduto" />
+    </many-to-one>
+    <many-to-one class="Modelos.Tamanho, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Tamanho">
+      <column name="idTamanho" />
+    </many-to-one>
+    <many-to-one class="Modelos.Cor, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Cor">
+      <column name="idCor" />
+    </many-to-one>
+    <many-to-one class="Modelos.Pedido, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Pedido">
+      <column name="idPedido" />
+    </many-to-one>
+    <many-to-one class="Modelos.DescontoCupom, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Desconto">
+      <column name="idDescontoCupom" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.MovimentoDeConta, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_movimentodeconta">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Data" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Data" length="300" />
+    </property>
+    <property name="Valor" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Valor" length="300" />
+    </property>
+    <property name="SaldoAtual" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="SaldoAtual" length="300" />
+    </property>
+    <property name="Tipo" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Tipo" length="300" />
+    </property>
+    <property name="Observacao" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Observacao" length="300" />
+    </property>
+    <property name="Status" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Status" length="300" />
+    </property>
+    <many-to-one class="Modelos.Cliente, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Cliente">
+      <column name="idCliente" />
+    </many-to-one>
+    <many-to-one class="Modelos.DescontoCupom, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Desconto">
+      <column name="idDescontoCupom" />
+    </many-to-one>
+    <many-to-one class="Modelos.ItemPedido, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="ItemPedido">
+      <column name="idItemPedido" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.Orcamento, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_orcamento">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <set cascade="all-delete-orphan" lazy="true" name="Itens">
+      <key>
+        <column name="idOrcamento" />
+      </key>
+      <one-to-many class="Modelos.ItemOrcamento, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </set>
+    <property name="DataOrcamento" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="DataOrcamento" length="300" />
+    </property>
+    <property name="Status" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Status" length="300" />
+    </property>
+    <property name="ModoFrete" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ModoFrete" length="300" />
+    </property>
+    <property name="Rastreamento" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Rastreamento" length="300" />
+    </property>
+    <property name="PrecoFrete" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="PrecoFrete" length="300" />
+    </property>
+    <property name="ModoPagamento" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ModoPagamento" length="300" />
+    </property>
+    <many-to-one class="Modelos.Cliente, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Cliente">
+      <column name="idCliente" />
+    </many-to-one>
+    <many-to-one class="Modelos.Endereco, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Endereco">
+      <column name="idEndereco" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.PaginaDeControleVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_paginadecontrolevo">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <bag cascade="all-delete-orphan" lazy="true" name="permissoes">
+      <key>
+        <column name="idPaginaDeControleVO" />
+      </key>
+      <one-to-many class="Modelos.PermissaoVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <property name="nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="nome" length="300" />
+    </property>
+    <property name="pagina" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="pagina" length="300" />
+    </property>
+    <property name="ordem" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ordem" length="300" />
+    </property>
+    <property name="fixa" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="fixa" length="300" />
+    </property>
+    <property name="construcao" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="construcao" length="300" />
+    </property>
+    <many-to-one class="Modelos.GrupoDePaginasVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="grupoDePaginas">
+      <column name="idGrupoDePaginasVO" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.Pedido, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_pedido">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <set cascade="all-delete-orphan" lazy="true" name="Itens">
+      <key>
+        <column name="idPedido" />
+      </key>
+      <one-to-many class="Modelos.ItemPedido, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </set>
+    <property name="DataPedido" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="DataPedido" length="300" />
+    </property>
+    <property name="Status" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Status" length="300" />
+    </property>
+    <property name="ModoFrete" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ModoFrete" length="300" />
+    </property>
+    <property name="PrecoFrete" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="PrecoFrete" length="300" />
+    </property>
+    <property name="Rastreamento" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Rastreamento" length="300" />
+    </property>
+    <property name="FormaDePagamento" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="FormaDePagamento" length="300" />
+    </property>
+    <property name="ComprovanteDeposito" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ComprovanteDeposito" length="300" />
+    </property>
+    <property name="Comissionado" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Comissionado" length="300" />
+    </property>
+    <property name="InformacoesDeposito" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="InformacoesDeposito" length="300" />
+    </property>
+    <property name="BancoDeposito" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="BancoDeposito" length="300" />
+    </property>
+    <many-to-one class="Modelos.Cliente, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Cliente">
+      <column name="idCliente" />
+    </many-to-one>
+    <many-to-one class="Modelos.Endereco, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Endereco">
+      <column name="idEndereco" />
+    </many-to-one>
+    <many-to-one class="Modelos.Cupom, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Cupom">
+      <column name="idCupom" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.PermissaoGrupoDePaginasVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_permissaogrupodepaginasvo">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <many-to-one class="Modelos.GrupoDePaginasVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="grupoDePaginas">
+      <column name="idGrupoDePaginasVO" />
+    </many-to-one>
+    <many-to-one class="Modelos.UsuarioVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="usuario">
+      <column name="idUsuarioVO" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.PermissaoVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_permissaovo">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <many-to-one class="Modelos.PaginaDeControleVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="paginaDeControle">
+      <column name="idPaginaDeControleVO" />
+    </many-to-one>
+    <many-to-one class="Modelos.UsuarioVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="usuario">
+      <column name="idUsuarioVO" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.Peso, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_peso">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Valor" type="System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Valor" length="300" />
+    </property>
+    <many-to-one class="Modelos.Tamanho, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Tamanho">
+      <column name="idTamanho" />
+    </many-to-one>
+    <many-to-one class="Modelos.Produto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Produto">
+      <column name="idProduto" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.Produto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_produto">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <bag cascade="all" name="Categorias" table="categorias_produtos">
+      <key>
+        <column name="ProdutoID" />
+      </key>
+      <many-to-many class="CategoriaProduto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <column name="CategoriaID" />
+      </many-to-many>
+    </bag>
+    <bag cascade="all" name="SubSegmentos" table="produto_subsegmentoproduto">
+      <key>
+        <column name="Produto_id" />
+      </key>
+      <many-to-many class="SubSegmentoProduto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <column name="SubSegmentoProduto_id" />
+      </many-to-many>
+    </bag>
+    <bag cascade="all" inverse="true" name="Cores" table="cor_produto">
+      <key>
+        <column name="Produto_id" />
+      </key>
+      <many-to-many class="Modelos.Cor, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <column name="Cor_id" />
+      </many-to-many>
+    </bag>
+    <bag cascade="all-delete-orphan" lazy="true" name="Informacoes">
+      <key>
+        <column name="idProduto" />
+      </key>
+      <one-to-many class="Modelos.InformacaoProduto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <bag cascade="all-delete-orphan" lazy="true" name="Albuns">
+      <key>
+        <column name="idProduto" />
+      </key>
+      <one-to-many class="Modelos.Album, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Chave" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Chave" length="300" />
+    </property>
+    <property name="Referencia" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Referencia" length="300" />
+    </property>
+    <property name="Descricao" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Descricao" length="300" />
+    </property>
+    <property name="Visivel" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Visivel" length="300" />
+    </property>
+    <property name="Indisponivel" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Indisponivel" length="300" />
+    </property>
+    <property name="NumeroVendas" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="NumeroVendas" length="300" />
+    </property>
+    <property name="Importado" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Importado" length="300" />
+    </property>
+    <property name="ImportarPreco" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ImportarPreco" length="300" />
+    </property>
+    <many-to-one class="SegmentoProduto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" fetch="join" lazy="proxy" name="Segmento">
+      <column name="idSegmentoProduto" />
+    </many-to-one>
+    <many-to-one class="Modelos.Peso, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" fetch="join" lazy="proxy" name="Peso">
+      <column name="idPeso" />
+    </many-to-one>
+    <many-to-one class="Modelos.ImagemProduto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" fetch="join" lazy="proxy" name="Imagem">
+      <column name="idImagemProduto" />
+    </many-to-one>
+    <many-to-one class="Preco, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Preco">
+      <column name="idPreco" />
+    </many-to-one>
+    <many-to-one class="Marca, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Marca">
+      <column name="idMarca" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.Resposta, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_resposta">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Origem" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Origem" length="300" />
+    </property>
+    <property name="Descricao" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Descricao" length="300" />
+    </property>
+    <property name="DataEnvio" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="DataEnvio" length="300" />
+    </property>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.SegmentoFilhoVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_segmentofilhovo">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <bag cascade="all-delete-orphan" lazy="true" name="imagens">
+      <key>
+        <column name="idSegmentoFilhoVO" />
+      </key>
+      <one-to-many class="Modelos.ImagemSegFilhoVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <property name="nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="nome" length="300" />
+    </property>
+    <property name="chave" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="chave" length="300" />
+    </property>
+    <property name="descricao" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="descricao" length="300" />
+    </property>
+    <property name="ordem" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ordem" length="300" />
+    </property>
+    <property name="visivel" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="visivel" length="300" />
+    </property>
+    <many-to-one class="Modelos.Tela, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="tela">
+      <column name="idTela" />
+    </many-to-one>
+    <many-to-one class="Modelos.SegmentoPaiVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="segPai">
+      <column name="idSegmentoPaiVO" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.SegmentoPaiVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_segmentopaivo">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <bag cascade="all-delete-orphan" lazy="true" name="imagens">
+      <key>
+        <column name="idSegmentoPaiVO" />
+      </key>
+      <one-to-many class="Modelos.ImagemSegPaiVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <property name="nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="nome" length="300" />
+    </property>
+    <property name="chave" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="chave" length="300" />
+    </property>
+    <property name="visivel" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="visivel" length="300" />
+    </property>
+    <property name="descricao" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="descricao" length="300" />
+    </property>
+    <property name="ordem" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ordem" length="300" />
+    </property>
+    <many-to-one class="Modelos.Tela, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="tela">
+      <column name="idTela" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.Tamanho, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_tamanho">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <set cascade="all-delete-orphan" lazy="true" name="Pesos">
+      <key>
+        <column name="idTamanho" />
+      </key>
+      <one-to-many class="Modelos.Peso, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </set>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Chave" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Chave" length="300" />
+    </property>
+    <property name="Visivel" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Visivel" length="300" />
+    </property>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.Tela, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_tela">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <bag cascade="all-delete-orphan" lazy="true" name="campos">
+      <key>
+        <column name="idTela" />
+      </key>
+      <one-to-many class="Modelos.CampoTela, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <bag cascade="all-delete-orphan" lazy="true" name="dados">
+      <key>
+        <column name="idTela" />
+      </key>
+      <one-to-many class="Modelos.DadoVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <bag cascade="all-delete-orphan" lazy="true" name="segmentosPai">
+      <key>
+        <column name="idTela" />
+      </key>
+      <one-to-many class="Modelos.SegmentoPaiVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <bag cascade="all-delete-orphan" lazy="true" name="segmentosFilho">
+      <key>
+        <column name="idTela" />
+      </key>
+      <one-to-many class="Modelos.SegmentoFilhoVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <bag cascade="all-delete-orphan" lazy="true" name="categorias">
+      <key>
+        <column name="idTela" />
+      </key>
+      <one-to-many class="Modelos.CategoriaVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <property name="nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="nome" length="300" />
+    </property>
+    <property name="nomeFixo" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="nomeFixo" length="300" />
+    </property>
+    <property name="multiplo" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="multiplo" length="300" />
+    </property>
+    <many-to-one class="Modelos.UploadTela, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="upload">
+      <column name="idUploadTela" />
+    </many-to-one>
+    <many-to-one class="Modelos.PaginaDeControleVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="pagina">
+      <column name="idPaginaDeControleVO" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.UploadTela, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_uploadtela">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="QtdeFotos" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="QtdeFotos" length="300" />
+    </property>
+    <property name="TamFotoGrW" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="TamFotoGrW" length="300" />
+    </property>
+    <property name="TamFotoPqW" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="TamFotoPqW" length="300" />
+    </property>
+    <property name="TamFotoGrH" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="TamFotoGrH" length="300" />
+    </property>
+    <property name="TamFotoPqH" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="TamFotoPqH" length="300" />
+    </property>
+    <property name="Configuracao" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Configuracao" length="300" />
+    </property>
+    <property name="Qualidade" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Qualidade" length="300" />
+    </property>
+    <property name="Cor" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Cor" length="300" />
+    </property>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Modelos.UsuarioVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_usuariovo">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <set cascade="all-delete-orphan" lazy="true" name="permissoesGrupos">
+      <key>
+        <column name="idUsuarioVO" />
+      </key>
+      <one-to-many class="Modelos.PermissaoGrupoDePaginasVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </set>
+    <set cascade="all-delete-orphan" lazy="true" name="permissoesPaginas">
+      <key>
+        <column name="idUsuarioVO" />
+      </key>
+      <one-to-many class="Modelos.PermissaoVO, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </set>
+    <property name="nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="nome" length="300" />
+    </property>
+    <property name="login" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="login" length="300" />
+    </property>
+    <property name="senha" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="senha" length="300" />
+    </property>
+    <property name="tipo" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="tipo" length="300" />
+    </property>
+    <property name="status" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="status" length="300" />
+    </property>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Preco, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_preco">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Valor" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Valor" length="300" />
+    </property>
+    <property name="ValorSemPromocao" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ValorSemPromocao" length="300" />
+    </property>
+    <property name="DataVigencia" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="DataVigencia" length="300" />
+    </property>
+    <many-to-one class="Modelos.Produto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Produto">
+      <column name="idProduto" />
+    </many-to-one>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="SegmentoProduto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_segmentoproduto">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <set cascade="all-delete-orphan" lazy="true" name="SubSegmentos">
+      <key>
+        <column name="idSegmentoProduto" />
+      </key>
+      <one-to-many class="SubSegmentoProduto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </set>
+    <bag cascade="all-delete-orphan" lazy="true" name="Produtos">
+      <key>
+        <column name="idSegmentoProduto" />
+      </key>
+      <one-to-many class="Modelos.Produto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Chave" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Chave" length="300" />
+    </property>
+    <property name="Visivel" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Visivel" length="300" />
+    </property>
+    <property name="Texto" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Texto" length="300" />
+    </property>
+  </class>
+
+  <class xmlns="urn:nhibernate-mapping-2.2" name="SubSegmentoProduto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" table="gl_subsegmentoproduto">
+    <id name="Id" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="id" />
+      <generator class="native" />
+    </id>
+    <set cascade="all-delete-orphan" lazy="true" name="Categorias">
+      <key>
+        <column name="idSubSegmentoProduto" />
+      </key>
+      <one-to-many class="CategoriaProduto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </set>
+    <bag cascade="all" inverse="true" name="Produtos" table="produto_subsegmentoproduto">
+      <key>
+        <column name="SubSegmentoProduto_id" />
+      </key>
+      <many-to-many class="Modelos.Produto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <column name="Produto_id" />
+      </many-to-many>
+    </bag>
+    <property name="Nome" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Nome" length="300" />
+    </property>
+    <property name="Chave" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Chave" length="300" />
+    </property>
+    <property name="CodigoImportacao" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="CodigoImportacao" length="300" />
+    </property>
+    <property name="Visivel" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Visivel" length="300" />
+    </property>
+    <many-to-one class="SegmentoProduto, App_Code.dyddbq5z, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" lazy="proxy" name="Segmento">
+      <column name="idSegmentoProduto" />
+    </many-to-one>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,41 @@
+﻿
+
+<div>
+
+    <div>
+        <select id="listaTamanho">
+            <option ng-repeat="t in tamanhos"
+                    value="{{t.id}}">
+                {{t.nome}}>
+            </option>
+
+        </select>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    Peso
+                </th>
+                <th>
+                    Excluir
+                </th>
+            </tr>
+            <tr ng-repeat="s in selecionados">
+                <td>
+                    <span ng-model="s.nome"></span>
+                </td>
+                <td>
+                    <input ng-model="s.peso">
+                </td>
+                <td>
+                    [<a href ng-really-click="removerTamanho({{item.id}})" ng-really-message="Deseja excluir o produto {{s.nome}}?">X</a>]
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>

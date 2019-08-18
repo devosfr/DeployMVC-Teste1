@@ -1,0 +1,104 @@
+﻿using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+using System.Collections.Generic;
+
+public partial class ZepolControl_DadosTexto : System.Web.UI.UserControl
+{
+
+
+
+
+    /**
+     * <div><%=NomeUsuario %></div>
+		<div><%=Endereco %></div>
+		<div><%=Bairro %></div>
+		<div><%CidadeUf %></div>
+		<div>CEP <%=CEP %></div>
+     * /
+     * 
+     * pu
+     */
+
+    public string NomeUsuario
+    {
+        get { return ViewState["NomeUsuario"] == null ? "" : (string)ViewState["NomeUsuario"]; }
+        set { ViewState["NomeUsuario"] = value; }
+    }
+
+    public string Endereco
+    {
+        get { return ViewState["Endereco"] == null ? "" : (string)ViewState["Endereco"]; }
+        set { ViewState["Endereco"] = value; }
+    }
+
+    public string Bairro
+    {
+        get { return ViewState["Bairro"] == null ? "" : (string)ViewState["Bairro"]; }
+        set { ViewState["Bairro"] = value; }
+    }
+
+    public string CidadeUf
+    {
+        get { return ViewState["CidadeUf"] == null ? "" : (string)ViewState["CidadeUf"]; }
+        set { ViewState["CidadeUf"] = value; }
+    }
+
+    public string CEP
+    {
+        get { return ViewState["CEP"] == null ? "" : (string)ViewState["CEP"]; }
+        set { ViewState["CEP"] = value; }
+    }
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (Session["UsuarioLogado"] != null)
+        {
+            ClienteVO cliente = ((UsuarioVO)Session["UsuarioLogado"]).cliente;
+            NomeUsuario = cliente.nome;
+            if (cliente.endereco != null)
+                Endereco = cliente.endereco.endereco;
+            if (cliente.endereco.cidade != null && cliente.endereco.estado != null)
+                CidadeUf = string.Format("{0}/{1}", cliente.endereco.cidade.nome, cliente.endereco.estado.sigla);
+            CEP = cliente.endereco.CEP;
+
+        }
+    }
+
+
+
+    protected string BaseURL
+    {
+        get
+        {
+            try
+            {
+                return string.Format("http://{0}{1}",
+                                     HttpContext.Current.Request.ServerVariables["HTTP_HOST"],
+                                     (VirtualFolder.Equals("/")) ? string.Empty : VirtualFolder);
+            }
+            catch
+            {
+                // This is for design time
+                return null;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Returns the name of the virtual folder where our project lives
+    /// </summary>
+    private static string VirtualFolder
+    {
+        get { return HttpContext.Current.Request.ApplicationPath; }
+    }
+
+}

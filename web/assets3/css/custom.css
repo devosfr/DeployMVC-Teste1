@@ -1,0 +1,388 @@
+
+
+/*-----------======== CONFIGURAÇÕES GLOBAIS ========-----------*/
+.wrapper {
+    background-color:#fff;
+}
+
+body{
+    color:#fff;
+}
+
+.margin-top-35{
+    margin-top:35px;
+}
+
+.margin-bottom-30{
+    margin-bottom:30px;
+}
+
+.margin-bottom-20{
+    margin-bottom:20px;
+}
+
+.tamanho-550{
+min-height:550px;
+}
+
+.tamanho-700{
+    min-height:700px;
+}
+
+
+.form-control{
+    height:40px;
+    margin-bottom:10px;
+}
+
+.sombra img{
+margin-top:0px;
+}
+
+.margin-top-10{
+    margin-top:10px;
+}
+
+
+.texto{
+font-family: Arial;
+font-size:15px;
+color:#2F2F2F;
+}
+
+.endereco{
+text-align:center;
+height:250px;
+color:#656565;
+font-size:12px;
+font-family: 'robotoregular';
+padding-top:30px;
+padding-bottom:30px;
+}
+
+a {
+    text-decoration: none;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.titulo{
+color:#29670C;
+font-size:30px;
+font-family: 'robotolight';
+text-align:center;
+}
+
+
+.padding-40-vertical{
+    padding:40px 0px;
+}
+/*-----------======== CONFIGURAÇÕES GLOBAIS ========-----------*/
+/*-----------======== MENU TOPO ========-----------*/
+.telefone-topo{
+color:#919191;
+font-family: 'robotoregular';
+font-size:24px;
+}
+
+
+.navbar-nav li a{
+    text-transform:uppercase;
+    padding:0px;
+    margin-left:18px;
+    color:#A7A9AB;
+font-family: 'robotoregular';
+font-size:18px;
+}
+
+
+.navbar-nav li a:hover{
+    color:#616161;
+    text-decoration:none;
+}
+
+.navbar-nav li.active a{
+    color:#616161;
+    text-decoration:none;
+}
+
+.header .navbar-nav {
+    float: right;
+    margin-top: 50px;
+}
+
+/*-----------======== MENU TOPO ========-----------*/
+
+.baner-topo{
+height:200px;
+background-size:cover;
+background-position:center;
+
+}
+
+
+.baner-topo h1{
+color:#FFFFFF;
+font-size:36px;
+font-family: 'robotomedium';
+margin-left:220px;
+margin-top:100px;
+}
+
+
+.formulario{
+padding:70px 0px 45px 0px;
+background-color:#EDEDED;
+}
+
+
+.formulario h2{
+color:#009DFF;
+font-size:56px;
+font-family: 'robotobold';
+line-height:1;
+margin-bottom:40px;
+}
+
+.formulario h3{
+color:#0A2545;
+font-size:24px;
+font-family: 'robotoregular';
+margin-bottom:40px;
+}
+
+.formulario h4{
+color:#656565;
+font-size:18px;
+font-family: 'robotoregular';
+}
+
+
+.formulario-kemp{
+background-color:#fff;
+padding:50px 55px;
+box-shadow:0px 0px 3px #444;
+}
+
+.formulario-kemp h2{
+color:#656565;
+font-size:18px;
+font-family: 'robotoregular';
+}
+
+.padd-left{
+padding-left:0px;
+padding-right:0px;
+}
+
+.icone-formulario img{
+margin-top:10px;
+}
+
+.formulario-kemp .form-control {
+    font-size: 16px;
+    color: #A3A3A3;
+    border:none;
+    border-bottom: 1px solid #bdbdbd;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+
+.botao-enviar .botao{
+color:#FFFFFF;
+font-size:16px;
+font-family: 'robotobold';
+padding:10px 80px;
+border-radius:10px;
+border:1px solid #0099F9;
+background-color:#0099F9;
+}
+
+.botao-enviar .botao:hover{
+border:1px solid blue;
+background-color:blue;
+text-decoration:none;
+}
+
+.mensagem{
+color:green;
+font-family: 'robotoregular';
+font-size:14px;
+}
+
+.mensagem span{
+color:red;
+}
+
+.saiba-interno{
+background-color:#384F69;
+}
+
+
+.saiba{
+padding:90px 0px;
+background-size:cover;
+background-position:center;
+}
+
+.saiba h2{
+color:#0099F8;
+font-size:24px;
+font-family: 'robotoregular';
+margin-bottom:20px;
+}
+
+
+.saiba h3{
+color:#fff;
+font-size:48px;
+font-family: 'robotobold';
+margin-bottom:60px;
+line-height:1.2;
+}
+
+
+/*LG @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+@media (max-width: 1366px) {
+
+}
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  SPECIAL  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+@media (max-width: 1199px) {
+
+    .saiba h2 {
+    font-size: 22px;
+}
+
+    .saiba h3 {
+    font-size: 40px;
+}
+
+    .formulario h2 {
+    font-size: 50px;
+}
+
+.formulario h3 {
+    font-size: 22px;
+}
+
+.formulario h4 {
+    font-size: 16px;
+}
+    
+.baner-topo h1{
+font-size:32px;
+margin-left:110px;
+}
+
+
+.formulario-kemp h2 {
+    font-size: 18px;
+}
+
+}
+
+/*MD ###########################################################################################################################*/
+@media (max-width: 991px) {
+
+      .saiba h2 {
+    font-size: 20px;
+}
+
+    .saiba h3 {
+    font-size: 36px;
+}
+
+    .baner-topo h1{
+font-size:28px;
+margin-left:50px;
+}
+
+    
+    .formulario h2 {
+    font-size: 44px;
+}
+
+.formulario h3 {
+    font-size: 20px;
+}
+
+.formulario h4 {
+ margin-bottom:50px;
+}
+
+.formulario-kemp h2 {
+    font-size: 18px;
+}
+
+}
+
+/*SM $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
+@media (max-width: 767px) {
+
+         .saiba h2 {
+    font-size: 18px;
+}
+
+    .saiba h3 {
+    font-size: 32px;
+}
+    .baner-topo h1{
+font-size:26px;
+margin-left:0px;
+    margin-top: 80px;
+    text-align:center;
+}
+
+    .formulario-kemp h2 {
+    font-size: 18px;
+}
+        .formulario h2 {
+    font-size: 36px;
+}
+
+        .formulario-kemp h2 {
+    font-size: 18px;
+}
+
+}
+
+
+/*   SPECIAL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+@media (max-width: 580px) {
+
+    .formulario-kemp {
+    padding: 50px 0px 50px 15px;
+}
+
+
+
+          .formulario h2 {
+    font-size: 32px;
+}
+                    .formulario-kemp h2 {
+    font-size: 16px;
+}
+
+}
+
+
+/*   SPECIAL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+@media (max-width: 380px) {
+    .saiba h3 {
+    font-size: 28px;
+}
+}
+
+
+/*XS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+@media (max-width: 340px) {
+
+}
+

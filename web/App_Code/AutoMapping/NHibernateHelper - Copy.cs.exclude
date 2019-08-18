@@ -1,0 +1,188 @@
+﻿using FluentNHibernate.Automapping;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
+using Modelos;
+using NHibernate;
+using NHibernate.Cfg;
+using NHibernate.Tool.hbm2ddl;
+using Repository;
+using Repository.Conventions;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Web;
+public class NHibernateHelper
+{
+    private static string SerializedConfiguration = HttpContext.Current.Server.MapPath("~/userfiles/FNC/config_serialized");
+
+    public static ISessionFactory SessionFactory
+    {
+        set
+        {
+
+            HttpContext.Current.Application["SessionFactory"] = value;
+
+        }
+        get
+        {
+
+            if (HttpContext.Current.Application["SessionFactory"] == null)
+            {
+                HttpContext.Current.Application.Lock();
+                HttpContext.Current.Application["SessionFactory"] = CreateSessionFactory();
+                HttpContext.Current.Application.UnLock();
+            }
+            return (ISessionFactory)HttpContext.Current.Application["SessionFactory"];
+        }
+    }
+
+    public static ISession OpenSession()
+    {
+        Debug.WriteLine("Session Created");
+        return NHibernateHelper.SessionFactory.OpenSession();
+
+    }
+
+    public static ISession CurrentSession
+    {
+        get { return (ISession)HttpContext.Current.Items["current.session"]; }
+        set { HttpContext.Current.Items["current.session"] = value; }
+    }
+
+    public static ISessionFactory CreateSessionFactory()
+    {
+        try
+        {
+            System.Threading.Thread.CurrentThread.Priority = System.Threading.ThreadPriority.Highest;
+
+            string connectionString = @"Database=modelo3auto;Data Source=localhost;User Id=root;Password=root;charset=utf8;";
+
+
+
+            Configuration importada = LoadConfigurationFromFile();
+            FluentConfiguration configuracaoFNH = null;
+
+            if (importada == null)
+            {
+
+                if (Debugger.IsAttached)
+                {
+                    string complemento = "1";
+                    connectionString = @"Database=" + Configuracoes.getSetting("BDdatabase" + complemento) + ";Data Source=" + Configuracoes.getSetting("BDdatasource" + complemento) + ";User Id=" + Configuracoes.getSetting("BDuser" + complemento) + ";Password=" + Configuracoes.getSetting("BDpassword" + complemento) + ";charset=utf8;";
+                    configuracaoFNH = Fluently.Configure().ExposeConfiguration(cfg => BuildSchema(cfg)).Database(
+                    MySQLConfiguration.Standard.ConnectionString(connectionString).ShowSql().FormatSql()).ExposeConfiguration(x =>
+                    {
+                        x.SetInterceptor(new SqlStatementInterceptor());
+                    });
+                }
+                else
+                {
+                    string complemento = "";
+                    connectionString = @"Database=" + Configuracoes.getSetting("BDdatabase" + complemento) + ";Data Source=" + Configuracoes.getSetting("BDdatasource" + complemento) + ";User Id=" + Configuracoes.getSetting("BDuser" + complemento) + ";Password=" + Configuracoes.getSetting("BDpassword" + complemento) + ";charset=utf8;";
+
+                    configuracaoFNH = Fluently.Configure().ExposeConfiguration(cfg => BuildSchema(cfg)).Database(
+                    MySQLConfiguration.Standard.ConnectionString(connectionString).ShowSql().FormatSql()).ExposeConfiguration(x =>
+                    {
+                        x.SetInterceptor(new SqlStatementInterceptor());
+                    });
+                }
+                configuracaoFNH.Mappings(val => val.AutoMappings.Add(CreateAutomappings()));
+                SaveConfigurationToFile(configuracaoFNH.BuildConfiguration());
+            }
+            else
+            {
+                configuracaoFNH = Fluently.Configure(importada);
+            }
+
+            //        configuracaoFNH.Cache(c => c
+            //.UseQueryCache()
+            //.ProviderClass<HashtableCacheProvider>());
+
+
+            System.Threading.Thread.CurrentThread.Priority = System.Threading.ThreadPriority.Normal;
+            return configuracaoFNH.BuildSessionFactory();
+        }
+        catch (Exception ex)
+        {
+            throw;
+        }
+    }
+
+    private static void BuildSchema(Configuration config)
+    {
+        // delete the existing db on each run
+        //if (File.Exists(DbFile))
+        //    File.Delete(DbFile);
+
+        // this NHibernate tool takes a configuration (with mapping info in)
+        // and exports a database schema from it
+        new SchemaUpdate(config).Execute(false, true);
+    }
+
+    static AutoPersistenceModel CreateAutomappings()
+    {
+        // This is the actual automapping - use AutoMap to start automapping,
+        // then pick one of the static methods to specify what to map (in this case
+        // all the classes in the assembly that contains Employee), and then either
+        // use the Setup and Where methods to restrict that behaviour, or (preferably)
+        // supply a configuration instance of your definition to control the automapper.
+        return AutoMap.AssemblyOf<ModeloBase>(new AutomappingConfiguration()).Conventions.Setup(con =>
+        {
+            con.Add<DefaultTableNameConvention>();
+            con.Add<DefaultPrimaryKeyConvention>();
+            con.Add<DefaultStringLengthConvention>();
+            con.Add<DefaultReferenceConvention>();
+            con.Add<DefaultHasManyConvention>();
+            con.Add<CustomManyToManyTableNameConvention>();
+            con.Add<ManyToManyConvention>();
+            //con.Add<NumericalConvention>();
+
+        }).UseOverridesFromAssemblyOf<ProdutoOverride>();
+        //}).Conventions.Add(ConventionBuilder.HasMany.Always(x => x.Cascade.AllDeleteOrphan())).UseOverridesFromAssemblyOf<ProdutoOverride>();
+
+    }
+    private static bool IsConfigurationFileValid
+    {
+        get
+        {
+            //var ass = Assembly.GetCallingAssembly();
+            //if (ass.Location == null)
+              //  return false;
+            var configInfo = new FileInfo(SerializedConfiguration);
+            //var assInfo = new FileInfo(ass.Location);
+            if (!configInfo.Exists)
+                return false;
+            return true;
+        }
+    }
+
+    private static void SaveConfigurationToFile(Configuration configuration)
+    {
+        using (var file = File.Open(SerializedConfiguration, FileMode.Create))
+        {
+            var bf = new BinaryFormatter();
+            bf.Serialize(file, configuration);
+        }
+    }
+
+    private static Configuration LoadConfigurationFromFile()
+    {
+        if (IsConfigurationFileValid == false)
+            return null;
+        try
+        {
+            using (var file = File.Open(SerializedConfiguration, FileMode.Open))
+            {
+                var bf = new BinaryFormatter();
+                return bf.Deserialize(file) as Configuration;
+            }
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+
+    }
+}

@@ -1,0 +1,222 @@
+<%@ Page Title="" Language="C#" MasterPageFile="~/Controle/GerenciadorNovo.master" AutoEventWireup="true"
+    CodeFile="Loja.aspx.cs" Inherits="Controle_Cadastro_Categorias" %>
+
+<%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
+<%@ Register Src="~/Controle/UserControl/Endereco.ascx" TagName="Endereco" TagPrefix="uc1" %>
+<%@ Register Src="~/Controle/UserControl/Contato.ascx" TagName="Contato" TagPrefix="uc2" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="cphConteudo" runat="Server">
+    <script type="text/javascript">
+        $(document).ready(
+				function () {
+				    var secao = $('#hfSecao').val();
+				    if (secao != "") {
+				        if (secao == "C") {
+				            $('#divDados').show();
+				            $('#tituloCadastro').css('color', '#FFF');
+				            $('#divLista').hide();
+
+				        }
+				        else {
+				            $('#divDados').hide();
+				            $('#divLista').show();
+				            $('#tituloBusca').css('color', '#FFF');
+				        }
+				    }
+				    else if (window.location.href.indexOf("Codigo") != -1) {
+				        $('#divDados').show();
+
+				        $('#divLista').hide();
+				        $('#tituloBusca').css('display', 'none');
+
+				    }
+				    else {
+				        $('#divDados').hide();
+				        $('#divLista').show();
+				        $('#tituloBusca').css('color', '#FFF');
+				    }
+				    $(".decimal").maskMoney({ showSymbol: false, decimal: ",", thousands: "" });
+
+				    $('#tituloCadastro').click(function () {
+				        $('#divLista').stop().slideToggle(function () {
+				            if ($('#divLista').is(':visible')) {
+				                $('#tituloBusca').css('color', '#FFF');
+				                $('#hfSecao').val("");
+				            }
+
+				            else
+				                $('#tituloBusca').css('color', 'rgb(122, 122, 122)');
+
+
+				        });
+				        $('#divDados').stop().slideToggle(function () {
+				            if ($('#divDados').is(':visible')) {
+				                $('#tituloCadastro').css('color', '#FFF');
+				                $('#hfSecao').val("C");
+				            }
+
+				            else
+				                $('#tituloCadastro').css('color', 'rgb(122, 122, 122)');
+				        });
+				    });
+				    $('#tituloBusca').click(function () {
+				        $('#divLista').stop().slideToggle(function () {
+				            if ($('#divLista').is(':visible')) {
+				                $('#tituloBusca').css('color', '#FFF');
+				                $('#hfSecao').val("");
+				            }
+				            else {
+				                $('#tituloBusca').css('color', 'rgb(122, 122, 122)');
+				            }
+				        });
+				        $('#divDados').stop().slideToggle(function () {
+				            if ($('#divDados').is(':visible')) {
+				                $('#hfSecao').val("C");
+				                $('#tituloCadastro').css('color', '#FFF');
+				            }
+				            else {
+				                $('#tituloCadastro').css('color', 'rgb(122, 122, 122)');
+				                $('#hfSecao').val("");
+				            }
+				        });
+				    });
+
+				});
+
+
+    </script>
+    <asp:HiddenField ID="hfSecao" ClientIDMode="Static" runat="server" />
+    <asp:Literal runat="server" ID="litErro"></asp:Literal>
+    <h1 class="TituloPagina">Loja
+        </h1>
+
+    <h1 id="tituloCadastro" class="TituloSecao">Cadastro
+        </h1>
+    <div id="divDados" runat="server" clientidmode="Static">
+        
+
+<%--    public int idloja { get; set; }
+        public string dsloja { get; set; }
+        public string endloja { get; set; }
+        public string bairroloja { get; set; }
+        public string ceploja { get; set; }
+        public int idcidade { get; set; }
+        public string dscidade { get; set; }
+        public int idestado { get; set; }
+        public string dsestado { get; set; }
+        public string email1loja { get; set; }
+        public string respemail1 { get; set; }
+        public string email2loja { get; set; }
+        public string respemail2 { get; set; }
+        public string fone1loja { get; set; }
+        public string fone2loja { get; set; }
+        public string fone3loja { get; set; }
+        public string respfone { get; set; }
+        public string statusloja { get; set; }
+        public int cnpjloja { get; set; }
+--%>
+
+        <ul >
+                <li><%--idloja--%>
+                    <asp:Label ID="Label6" runat="server" Text="ID:" CssClass="nomeCampo"></asp:Label>
+                    <asp:TextBox runat="server" ID="txtID" Enabled="false"></asp:TextBox>
+                </li>
+                <li><%--dsloja--%>
+                <asp:Label ID="Label7" runat="server" Text="Nome:" CssClass="nomeCampo"></asp:Label>
+                <asp:TextBox runat="server" ID="txtNome"></asp:TextBox>
+                </li>
+                <uc1:Endereco ID="Endereco" runat="server" /> 
+            <uc2:Contato ID="Contato" runat="server" /> 
+
+                                <li>
+                                                <asp:Label ID="Label11" runat="server" Text="CNPJ:" CssClass="nomeCampo"></asp:Label>
+                <asp:TextBox runat="server" ID="txtCNPJ" Style="width:180px;" CssClass="CNPJ"></asp:TextBox>
+                </li>
+                <li><%--statusloja--%>
+                <asp:Label ID="Label22" runat="server" Text="Status:" CssClass="nomeCampo"></asp:Label>
+                                <asp:DropDownList ID="ddlStatus" runat="server">
+                    <asp:ListItem Text="Ativo" Value="A"></asp:ListItem>
+                    <asp:ListItem Text="Inativo" Value="I"></asp:ListItem>
+                </asp:DropDownList>
+                </li>
+            <li>
+                <%--obsfornecedor--%>
+                <asp:Label ID="Label13" runat="server" Text="Observações:" CssClass="nomeCampo"></asp:Label>
+<CKEditor:CKEditorControl ID="txtObservacoes" BasePath="~/ckeditor/" Width="100%" Height="250px" runat="server"></CKEditor:CKEditorControl>
+            </li>
+                <li><%--cnpjloja--%>
+
+                </li>
+        </ul>
+        <div>
+
+            <asp:Button ID="btnSalvar" CssClass="EstiloBotao" runat="server" Text="Salvar" OnClick="btnSalvar_Click" />
+            <asp:Button ID="btnAlterar" CssClass="EstiloBotao" CausesValidation="true" runat="server" Text="Alterar"
+                OnClick="btnAlterar_Click" />
+
+            <asp:Button ID="btnCancelar" CssClass="EstiloBotao" runat="server" Text="Cancelar" OnClick="btnCancelar_Click"
+                CausesValidation="False" />
+        </div>
+    </div>
+    <h1 id="tituloBusca" class="TituloSecao">
+               Busca
+            </h1>
+    <div id="divLista" runat="server" clientidmode="Static">
+        <div>
+            
+            <ul class="listaCampoBusca">
+<%--                <li>
+                    <asp:Label ID="Label4" runat="server" CssClass="nomeCampo"  Text="ID"></asp:Label><asp:TextBox runat="server" ID="txtBuscaID"></asp:TextBox></li>
+                <li>
+                    <asp:Label runat="server" Text="Nome" CssClass="nomeCampo"></asp:Label><asp:TextBox runat="server" ID="txtBuscaNome"></asp:TextBox></li>
+                <li>
+                    <asp:Label ID="Label1" runat="server" Text="Segmento Filho" CssClass="nomeCampo"></asp:Label><asp:DropDownList ID="ddlBuscaSegmento" runat="server" Width="300px">
+                    </asp:DropDownList></li>--%>
+            </ul>
+            <asp:Button ID="btnPesquisar" CssClass="EstiloBotao" runat="server" Text="Pesquisar" OnClick="btnPesquisar_Click"
+                CausesValidation="False" />
+        </div>
+        <div class="idFiltro clearfix">
+            <h2 class="TituloResultadoPesquisa">Resultado da pesquisa</h2>
+            <div class="idResultado">
+                <asp:GridView ID="gvSegmento" runat="server" AllowPaging="True" AutoGenerateColumns="False"
+                    PageSize="20" DataKeyNames="id" CellPadding="4" EmptyDataText="Nenhuma loja encontrada."
+                    ForeColor="Black" GridLines="Vertical" OnRowDeleting="gvSegmento_RowDeleting"
+                    AllowSorting="True" OnSorting="gvSegmento_Sorting" OnRowDataBound="gvSegmento_RowDataBound"
+                    OnPageIndexChanging="gvSegmento_PageIndexChanging" OnRowEditing="gvDados_RowEditing" BackColor="White" BorderColor="#DEDFDE"
+                    BorderStyle="None" BorderWidth="1px">
+                    <FooterStyle BackColor="#CCCC99" />
+                    <RowStyle BackColor="#DFDFDF" />
+                    <Columns>
+                        <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False"
+                            ReadOnly="True" SortExpression="id" />
+                        <asp:BoundField DataField="nome" HeaderText="Nome" InsertVisible="False" ReadOnly="True"
+                            SortExpression="nome" />
+                        <asp:CommandField ButtonType="Image" EditImageUrl="~/Controle/comum/img/BotoesGrid/icoEditar.jpg"
+                            EditText="Editar" HeaderText="" ShowEditButton="True" />
+
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:ImageButton runat="server" ID="btnCancel" CausesValidation="False" ImageUrl="~/Controle/comum/img/BotoesGrid/icoExcluir.jpg"
+                                    OnClientClick="return confirm('Deseja mesmo apagar esta loja?')"
+                                    CommandName="Delete"></asp:ImageButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                    <AlternatingRowStyle BackColor="White" />
+                </asp:GridView>
+            </div>
+        </div>
+    </div>
+                            <!--<asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:HyperLink ID="hplEditar" runat="server" NavigateUrl='<%# Eval("id", "Categorias.aspx?Codigo={0}") %>'>
+                                    <asp:Image ID="imgEditar" ToolTip="Editar" ImageUrl="~/Controle/comum/img/BotoesGrid/icoEditar.jpg"
+                                        runat="server" />
+                                </asp:HyperLink>
+                            </ItemTemplate>
+                        </asp:TemplateField>-->
+</asp:Content>

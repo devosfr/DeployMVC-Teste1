@@ -1,0 +1,201 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/Controle/GerenciadorNovo.master" AutoEventWireup="true" CodeFile="Usuarios.aspx.cs" Inherits="Controle_Cadastro_Usuario" Title="Usuario" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="cphConteudo" runat="Server">
+    <script type="text/javascript">
+        $(document).ready(
+				function () {
+				    var secao = $('#hfSecao').val();
+				    if (secao != "") {
+				        if (secao == "C") {
+				            $('#divDados').show();
+				            $('#tituloCadastro').css('color', '#FFF');
+				            $('#divLista').hide();
+
+				        }
+				        else {
+				            $('#divDados').hide();
+				            $('#divLista').show();
+				            $('#tituloBusca').css('color', '#FFF');
+				        }
+				    }
+				    else if (window.location.href.indexOf("Codigo") != -1) {
+				        $('#divDados').show();
+
+				        $('#divLista').hide();
+				        $('#tituloBusca').css('display', 'none');
+
+				    }
+				    else {
+				        $('#divDados').hide();
+				        $('#divLista').show();
+				        $('#tituloBusca').css('color', '#FFF');
+				    }
+				    $(".decimal").maskMoney({ showSymbol: false, decimal: ",", thousands: "" });
+
+				    $('#tituloCadastro').click(function () {
+				        $('#divLista').stop().slideToggle(function () {
+				            if ($('#divLista').is(':visible')) {
+				                $('#tituloBusca').css('color', '#FFF');
+				                $('#hfSecao').val("");
+				            }
+
+				            else
+				                $('#tituloBusca').css('color', 'rgb(122, 122, 122)');
+
+
+				        });
+				        $('#divDados').stop().slideToggle(function () {
+				            if ($('#divDados').is(':visible')) {
+				                $('#tituloCadastro').css('color', '#FFF');
+				                $('#hfSecao').val("C");
+				            }
+
+				            else
+				                $('#tituloCadastro').css('color', 'rgb(122, 122, 122)');
+				        });
+				    });
+				    $('#tituloBusca').click(function () {
+				        $('#divLista').stop().slideToggle(function () {
+				            if ($('#divLista').is(':visible')) {
+				                $('#tituloBusca').css('color', '#FFF');
+				                $('#hfSecao').val("");
+				            }
+				            else {
+				                $('#tituloBusca').css('color', 'rgb(122, 122, 122)');
+				            }
+				        });
+				        $('#divDados').stop().slideToggle(function () {
+				            if ($('#divDados').is(':visible')) {
+				                $('#hfSecao').val("C");
+				                $('#tituloCadastro').css('color', '#FFF');
+				            }
+				            else {
+				                $('#tituloCadastro').css('color', 'rgb(122, 122, 122)');
+				                $('#hfSecao').val("");
+				            }
+				        });
+				    });
+
+				});
+
+
+    </script>
+    <asp:HiddenField ID="hfSecao" ClientIDMode="Static" runat="server" />
+    <asp:Literal runat="server" ID="litErro"></asp:Literal>
+    <h1 class="TituloPagina">Usuários
+    </h1>
+
+    <h1 id="tituloCadastro" class="TituloSecao">Cadastro
+    </h1>
+    <div id="divDados" runat="server" clientidmode="Static">
+        <ul>
+            <li>
+                <span class="nomeCampo">Código:</span>
+                <asp:TextBox ID="txtId" runat="server" Width="63px" AutoPostBack="True" Enabled="False"></asp:TextBox>
+            </li>
+            <li>
+                <span class="nomeCampo">Nome:</span>
+                <asp:TextBox ID="txtNome" runat="server" Width="150px"
+                    AutoCompleteType="Disabled"></asp:TextBox>
+            </li>
+
+            <li>
+                <span class="nomeCampo">Login:</span>
+                <asp:TextBox ID="txtLogin" runat="server" Width="150px"
+                    AutoCompleteType="Disabled"></asp:TextBox>
+            </li>
+            <li>
+                <span class="nomeCampo">Senha:</span>
+                <asp:TextBox ID="txtSenha" TextMode="Password"   runat="server" Width="150px"
+                    AutoCompleteType="Disabled"></asp:TextBox>
+            </li>
+            <li>
+                <asp:Label ID="Label8" runat="server" Text="Status:" CssClass="nomeCampo"></asp:Label>
+                <asp:DropDownList ID="ddlStatus" runat="server" Width="150px">
+                    <asp:ListItem Selected="True" Value="AT">Ativo</asp:ListItem>
+                    <asp:ListItem Value="IN">Inativo</asp:ListItem>
+                </asp:DropDownList>
+            </li>
+
+        </ul>
+        <div>
+            <asp:Button ID="btnSalvar" CssClass="EstiloBotao" runat="server" Text="Salvar" OnClick="btnSalvar_Click" />
+            <asp:Button ID="btnAlterar" CssClass="EstiloBotao" CausesValidation="true" runat="server" Text="Alterar"
+                OnClick="btnAlterar_Click" />
+
+            <asp:Button ID="btnCancelar" CssClass="EstiloBotao" runat="server" Text="Cancelar" OnClick="btnCancelar_Click"
+                CausesValidation="False" />
+
+        </div>
+    </div>
+    <h1 id="tituloBusca" class="TituloSecao">Busca
+    </h1>
+    <div id="divLista" runat="server" clientidmode="Static">
+        <asp:Panel runat="server" DefaultButton="btnPesquisar">
+            <ul class="listaCampoBusca">
+                <li>
+                    <span class="nomeCampo">ID:</span>
+                    <asp:TextBox ID="txtIDBusca" runat="server" Width="63px"></asp:TextBox></li>
+                <li>
+                    <span class="nomeCampo">Login:</span>
+                    <asp:TextBox ID="txtBuscaLogin" runat="server" Width="220px"
+                        AutoCompleteType="Disabled"></asp:TextBox>
+
+                </li>
+
+            </ul>
+            <asp:Button ID="btnPesquisar" CssClass="EstiloBotao" runat="server" Text="Pesquisar" OnClick="btnPesquisar_Click"
+                CausesValidation="False" />
+        </asp:Panel>
+
+        <div class="idFiltro clearfix">
+            <h2>Resultado da pesquisa</h2>
+            <div class="idResultado">
+                <asp:GridView ID="GridView1" runat="server" AllowPaging="True"
+                    AutoGenerateColumns="False" DataKeyNames="id" CellPadding="4"
+                    EmptyDataText="Não existe dados." ForeColor="Black" GridLines="Both"
+                    AllowSorting="True" OnSorting="GridView1_Sorting" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing"
+                    OnPageIndexChanging="GridView1_PageIndexChanging" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px">
+                    <FooterStyle BackColor="#CCCC99" />
+                    <RowStyle BackColor="#F7F7DE" />
+                    <Columns>
+                        <asp:BoundField DataField="id" HeaderText="Id" ReadOnly="True"
+                            SortExpression="id" Visible="True">
+                            <HeaderStyle ForeColor="White" />
+                        </asp:BoundField>
+                        <asp:TemplateField HeaderText="Nome" SortExpression="nome">
+                            <ItemTemplate>
+                                <%# ((Modelos.UsuarioVO)Container.DataItem).nome %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Login" SortExpression="login">
+                            <ItemTemplate>
+                                <%# ((Modelos.UsuarioVO)Container.DataItem).login %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Status" SortExpression="status">
+                            <ItemTemplate>
+                                <%# ((Modelos.UsuarioVO)Container.DataItem).status == "AT" ? "Ativo": "Inativo" %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:CommandField ButtonType="Image" EditImageUrl="~/Controle/comum/img/BotoesGrid/icoEditar.jpg"
+                            EditText="Editar" HeaderText="" ShowEditButton="True" />
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:ImageButton runat="server" ID="btnCancel" CausesValidation="False" ImageUrl="~/Controle/comum/img/BotoesGrid/icoExcluir.jpg"
+                                    OnClientClick="return confirm('Deseja mesmo apagar este usuário?')" CommandName="Delete"></asp:ImageButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                    <AlternatingRowStyle BackColor="White" />
+                </asp:GridView>
+            </div>
+        </div>
+    </div>
+
+
+</asp:Content>
+

@@ -1,0 +1,60 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+
+namespace Modelos
+{
+    /// <summary>
+    /// Summary description for Pedido
+    /// </summary>
+    public class OpcaoFreteDistancia : ModeloBase, IEquatable<OpcaoFreteDistancia>
+    {
+
+        public virtual string Nome { get; set; }
+
+        public virtual Decimal DistanciaMaxima { get; set; }
+        public virtual Decimal DistanciaMinima { get; set; }
+        public virtual float PesoMinimo { get; set; }
+        public virtual float PesoMaximo { get; set; }
+        public virtual Decimal ValorMinimoCompra { get; set; }
+
+        public virtual Decimal Valor { get; set; }
+
+        //Requisitos para opcao
+        public virtual Decimal ValorMinimoCompra { get; set; }
+        public virtual float PesoMaximo { get; set; }
+
+        
+        //Preço da opção
+        public virtual Decimal Preco { get; set; }
+
+
+
+        public OpcaoFreteDistancia()
+        {
+
+        }
+
+        public bool Equals(OpcaoFreteDistancia other)
+        {
+            if (Id == other.Id && other.Id > 0)
+                return true;
+
+            //if (Cidade == null || !Cidade.Equals(other.Cidade))
+            //    return false;
+
+            //if (Estado == null || !Estado.Equals(other.Estado))
+            //    return false;
+
+            //if (String.IsNullOrEmpty(Logradouro) || !Logradouro.Equals(other.Logradouro))
+            //    return false;
+
+            //if (String.IsNullOrEmpty(Bairro) || !Bairro.Equals(other.Bairro))
+            //    return false;
+
+            return true;
+        }
+    }
+}

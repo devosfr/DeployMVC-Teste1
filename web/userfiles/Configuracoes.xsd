@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="settings"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="settings">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="telas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="grupo" maxOccurs="unbounded" minOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="tela" maxOccurs="unbounded" minOccurs="1">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="campo" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="estilo" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:attribute name="nome" type="xs:string" use="required"/>
+                                    <xs:attribute name="valor" type="xs:string" use="required"/>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="nome" type="xs:string" use="required"/>
+                              <xs:attribute name="destino" type="xs:string" use="required"/>
+                              <xs:attribute name="classe" type="xs:string" use="optional"/>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="uplFoto" maxOccurs="1" minOccurs="0">
+                            <xs:complexType>
+                              <xs:attribute name="QtdeFotos" type="xs:integer" use="optional"/>
+                              <xs:attribute name="TamFotoGrW" type="xs:integer" use="optional"/>
+                              <xs:attribute name="TamFotoPqW" type="xs:integer" use="optional"/>
+                              <xs:attribute name="TamFotoGrH" type="xs:integer" use="optional"/>
+                              <xs:attribute name="TamFotoPqH" type="xs:integer" use="optional"/>
+                              <xs:attribute name="Configuracao" type="xs:integer" use="optional"/>
+                              <xs:attribute name="Qualidade" type="xs:integer" use="optional"/>
+                              <xs:attribute name="Cor" type="xs:string" use="optional"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="nome" type="xs:string" use="required"/>
+                        <xs:attribute name="grupo" type="xs:string" use="required"/>
+                        <xs:attribute name="multidocumento" type="xs:boolean" use="required"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="nome" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="password" type="xs:string" use="required"/>
+    </xs:complexType>
+
+  </xs:element>
+
+</xs:schema>

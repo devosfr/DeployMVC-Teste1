@@ -1,0 +1,17 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Contato.ascx.cs" Inherits="ZepolControl_DadosTexto" %>
+<!-- Controles -->
+
+<!-- CSS -->
+<!-- JS -->
+<!-- Html do Cabecalho -->
+<li>
+<asp:Label ID="Label14" runat="server" Text="Email:" CssClass="nomeCampo"></asp:Label>
+<asp:TextBox runat="server" ID="txtEmail" Style="width: 300px;"></asp:TextBox>
+</li>
+<li>
+    <asp:Label ID="Label18" runat="server" Text="Fone 1:" CssClass="nomeCampo"></asp:Label>
+    <asp:TextBox runat="server" ID="txtFone1" CssClass="Telefone"></asp:TextBox>
+    <asp:Label ID="Label19" runat="server" Text="Fone 2:" CssClass="nomeCampo"></asp:Label>
+    <asp:TextBox runat="server" ID="txtFone2" CssClass="Telefone"></asp:TextBox>
+</li>
+

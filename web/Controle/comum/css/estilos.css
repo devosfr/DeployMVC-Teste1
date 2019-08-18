@@ -1,0 +1,34 @@
+/******************************************************************************
+
+
+******************************************************************************/
+
+@import url("_tools.css"); /* Classes de configuração geral */
+@import url("_semantica.css"); /* Configuração dos estilos de tipografia */
+@import url("_projeto.css"); /* Estilos específicos do projeto */
+@import url("_projeto2.css"); /* Estilos específicos do projeto */
+@import url("thickbox.css"); /* Estilos específicos do projeto */
+
+.listaSiteMap
+{
+    
+    }
+    .boxSize
+{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+    .listaSiteMap>li
+    {
+            -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding:0 10px;
+        }
+    .listaSiteMap>li>a
+    {
+        font:normal normal 14px Calibri;
+        color:#656565;
+        text-decoration:none;
+    }

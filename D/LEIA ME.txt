@@ -1,0 +1,3 @@
+Os arquivos tem o css e js iguais são exceto index.html.
+
+Em todos os arquivos o cabeçalho e o rodapé são iguais.

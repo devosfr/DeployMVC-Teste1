@@ -1,0 +1,86 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="SegundoMenuRodape.ascx.cs"
+    Inherits="ZepolControl_DadosTexto" %>
+<!-- CSS -->
+<%--<link rel="stylesheet" type="text/css" href="<%= BaseURL %>/css/superfish/superfish.css"
+    media="screen" />--%>
+<style type="text/css">
+    .SegundoMenuRodape
+    {
+        position: relative;
+    }
+    
+    .SegundoMenuRodape > ul
+    {
+        text-align:center;
+    }
+    
+    .SegundoMenuRodape > ul > li
+    {
+display: inline;
+        padding:0 15px;
+                font: normal lighter 16px Calibri;
+        color: #CB3399;
+        border-right:1px solid #CB3399;
+        height:1em;
+        
+    }
+    .SegundoMenuRodape > ul > li:last-child
+    {
+        border-right:none;
+        
+    }
+    .SegundoMenuRodape > ul > li > a
+    {
+        font: normal lighter 16px Calibri;
+        color: #CB3399;
+        height:1em;
+    }
+    .SegundoMenuRodape > ul > li > a:hover
+    {
+        font: normal lighter 16px Calibri;
+        color: #CB3399;
+    }
+    
+</style>
+<!-- JS -->
+<%--<script type="text/javascript" src="<%= BaseURL %>/js/superfish.js"></script>--%>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('.SegundoMenuRodape>ul>li>a').each(function () {
+            //Or: $.each( $("p"), function() {
+            if ($(this).attr('href') == window.location.href) {
+                $(this).attr('class', 'selecionadoRodape');
+            }
+        });
+
+        //        $('.botaoSegundoMenuRodape').mouseenter(function () {
+        //            $(this).children('a').css('color', 'white');
+        //        });
+        //        $('.botaoSegundoMenuRodape').mouseleave(function () {
+        //            $(this).children('a').css('color', '#006533');
+        //        });
+    });
+</script>
+<!-- HTML do SegundoMenuRodape -->
+<%--Home
+A Empresa
+Cotação
+Contato
+51 | 8279 0704
+dssegurodecarga@gmail.com
+
+Seguros
+RCTR-C
+RCF-DC
+RCTR-VI
+RCTA-C
+RCA-C--%>
+<div class="SegundoMenuRodape divLimpa" align="center">
+    <ul class="divLimpa">
+        <li><a href="<%= BaseURL %>/Texto/Empresa">Empresa</a></li>
+        <li><a href="<%= BaseURL %>/Texto/Valores">Valores</a></li>
+        <li><a href="<%= BaseURL %>/Texto/Depoimentos">Depoimentos</a></li>
+        <li><a href="<%= BaseURL %>/Texto/PoliticaTrocas">Política de Trocas</a></li>
+    </ul>
+</div>

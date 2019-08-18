@@ -1,0 +1,93 @@
+﻿using Modelos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+/// <summary>
+/// Summary description for ControleComissao
+/// </summary>
+public class ControleComissao
+{
+    private static Repository<MovimentoDeConta> RepositorioMovimentoDeConta
+    {
+        get
+        {
+            return new Repository<MovimentoDeConta>(NHibernateHelper.CurrentSession);
+        }
+    }
+
+    private static Repository<Pedido> RepositorioPedido
+    {
+        get
+        {
+            return new Repository<Pedido>(NHibernateHelper.CurrentSession);
+        }
+    }
+
+    public static void SolicitarSaque(Cliente cliente, string dadosSaque, decimal valor)
+    {
+        MovimentoDeConta movimento = new MovimentoDeConta();
+
+        if (cliente.GetSaldoAtual() < valor)
+            throw new Exception("Valor requerido é maior que o saldo atual da conta.");
+
+        DadoVO dado = MetodosFE.getTela("Configurações de Bonus");
+
+        decimal valorRetirada = Convert.ToDecimal(dado.valor);
+
+        if (valor < valorRetirada)
+            throw new Exception("Valor mínimo para retirada é de " + valorRetirada .ToString("C")+ ".");
+
+        movimento.Cliente = cliente;
+        movimento.Data = DateTime.Now;
+        movimento.Desconto = null;
+        movimento.Valor = valor;
+        movimento.Tipo = (int)MovimentoDeConta.TipoMovimento.Saque;
+        movimento.Status = (int)MovimentoDeConta.StatusMovimento.Aberto;
+        movimento.Observacao = dadosSaque;
+        movimento.ItemPedido = null;
+
+        RepositorioMovimentoDeConta.Add(movimento);
+    }
+
+    public static IList<MovimentoDeConta> BuscaMovimentosPorData(DateTime dataInicio, DateTime dataFim, Cliente cliente)
+    {
+        IList<MovimentoDeConta> movimentos = RepositorioMovimentoDeConta.FilterBy(x => x.Data >= dataInicio && x.Data <= dataFim && x.Cliente.Id == cliente.Id).ToList();
+
+        return movimentos;
+    }
+
+    public static void AdicionarComissoes(Pedido pedido)
+    {
+        if (!pedido.Comissionado && pedido.Cupom != null)
+        {
+            if (pedido.Cupom.Cliente.ParticipanteBonificacao && pedido.Cupom.Cliente.Id != pedido.Cliente.Id)
+            {
+                IList<ItemPedido> itens = pedido.Itens.ToList();
+
+                foreach (var item in itens)
+                {
+                    if (item.Desconto != null)
+                    {
+                        MovimentoDeConta comissao = new MovimentoDeConta();
+                        comissao.Cliente = pedido.Cupom.Cliente;
+                        comissao.ItemPedido = item;
+                        comissao.Valor = item.Desconto.Comissao * item.Quantidade;
+                        comissao.Data = DateTime.Now;
+                        comissao.Tipo = (int)MovimentoDeConta.TipoMovimento.Bonus;
+                        comissao.Status = (int)MovimentoDeConta.StatusMovimento.Confirmado;
+                        comissao.SaldoAtual = comissao.Cliente.GetSaldoAtual() + comissao.Valor;
+
+                        RepositorioMovimentoDeConta.Add(comissao);
+                    }
+                }
+            }
+
+            pedido.Comissionado = true;
+            RepositorioPedido.Update(pedido);
+        }
+    }
+
+
+
+}

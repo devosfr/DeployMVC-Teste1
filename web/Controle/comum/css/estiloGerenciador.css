@@ -1,0 +1,350 @@
+
+
+ul, li, h1, h2, h3, h4, h5, body, html {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.conteudo {
+    font: normal 14px Arial;
+    color: black;
+}
+
+.listaCampoBusca {
+}
+
+    .listaCampoBusca li {
+        vertical-align: baseline;
+        margin: 0 0 5px 0;
+    }
+
+        .listaCampoBusca li > span {
+            display: inline-block;
+            text-align: right;
+            width: 120px;
+            padding: 0 5px 0 0;
+            height: 24px;
+            vertical-align: baseline;
+        }
+
+    .listaCampoBusca > li:nth-child(2n) {
+    }
+
+    .listaCampoBusca > li:nth-child(2n+1) {
+    }
+
+.TituloSecao, .tituloProduto, .TituloResultadoPesquisa {
+    width: 100%;
+    font: normal 14px Arial;
+    margin: 10px 0 5px;
+    color: #7A7A7A;
+}
+
+.TituloSecao {
+    border: 1px solid #CCC;
+    background: #315189;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.tituloProduto {
+    border: 1px solid #CCC;
+    background: #AAA;
+    color: #336699;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.TituloPagina {
+    width: 100%;
+    font: normal bold 15px Arial;
+    margin: 0 0 10px;
+}
+
+.EstiloBotao {
+    border: 1px solid #CCCCCC;
+    background: #E5E5E5;
+    font: normal bold 12px Arial;
+    color: black;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+    .EstiloBotao:hover {
+        opacity: 0.6;
+    }
+
+#divDados {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+    #divDados > ul, #divDados div > ul {
+        margin: 5px 0;
+        width: 100%;
+    }
+
+        #divDados > ul > li, #divDados div > ul > li {
+            margin: 0 0 5px;
+            vertical-align: baseline;
+            line-height: 30px;
+        }
+
+            #divDados > ul > li > span, #divDados div > ul > li > span {
+                display: inline-block;
+                width: 110px;
+                text-align: right;
+                vertical-align: top;
+                margin-top: 6px;
+            }
+
+    #divDados > div {
+        margin: 5px 0;
+    }
+
+select {
+    display: inline-block;
+}
+
+#divLista {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+    /*.conteudo > * 
+{
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}*/
+
+    #divLista > ul {
+        margin: 5px 0;
+    }
+
+        #divLista > ul > li {
+            margin: 0 0 5px;
+            vertical-align: baseline;
+        }
+
+    #divLista > div > ul {
+        margin: 5px 0;
+    }
+
+        #divLista > div > ul > li {
+            margin: 0 0 5px;
+            vertical-align: baseline;
+        }
+
+input[type="text"] {
+    height: 28px;
+    border: 1px solid #CCCCCC;
+    font: normal 12px Arial;
+    color: #666;
+    padding: 0;
+}
+
+select {
+    height: 28px;
+    border: 1px solid #CCCCCC;
+    font: normal 12px Arial;
+    color: #666;
+    padding: 0;
+}
+
+.nomeCampo {
+    font: normal 14px Arial;
+}
+
+
+/* Tabela */
+
+.idResultado {
+}
+
+    .idResultado > div > table {
+        width: 100%;
+        border: none;
+        font: normal 14px Arial;
+        color: black;
+    }
+
+        .idResultado > div > table > tbody > tr > th, .idResultado > div > table > tbody > tr > th > a {
+            border: none;
+            font: normal 15px Arial;
+            color: white;
+        }
+
+        .idResultado > div > table > tbody > tr:hover {
+            border: 1px solid black;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .idResultado > div > table > tbody > tr > td {
+            border: none;
+        }
+
+        .idResultado > div > table > tbody > tr > th {
+            background: #333;
+        }
+
+        .idResultado > div > table > tbody > tr:nth-child(2n) {
+            background: #DFDFDF;
+        }
+
+
+
+/*Div de mensagens*/
+
+.divSucesso {
+    width: 1100px;
+    min-height: 30px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    margin-left: -550px;
+    border: 1px solid #D6E9C6;
+    background: #DFF0D8;
+    font: normal 12px Arial;
+    color: #468847;
+    text-align: left;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 200;
+}
+
+    .divErro > a > img, .divSucesso > a > img {
+        position: absolute;
+        cursor: pointer;
+        top: 10px;
+        right: 10px;
+    }
+
+.divErro {
+    text-align: left;
+    position: fixed;
+    width: 1100px;
+    min-height: 30px;
+    top: 0;
+    left: 50%;
+    margin-left: -550px;
+    border: 1px solid #EED3D7;
+    background: #F2DEDE;
+    font: normal 12px Arial;
+    color: #B94A48;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 200;
+}
+
+.clearfix:after {
+    content: " "; /* Older browser do not support empty content */
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.alert-danger {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}
+
+.alert {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.lista-portais {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+    .lista-portais > li {
+        float: left;
+        width: 180px;
+    }
+
+
+
+.tabela-contas {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+    .tabela-contas td, .tabela-contas th {
+        position: relative;
+        height: 36px;
+        border: 1px solid black;
+        padding: 1px 3px;
+        vertical-align: bottom;
+    }
+
+.tabela-item-pedido {
+    position: absolute;
+    top: 36px;
+    white-space: nowrap;
+    background: white;
+    display: none;
+    z-index: 50;
+    padding: 5px;
+}
+
+    .tabela-item-pedido table {
+        border-collapse: collapse;
+    }
+
+
+.lista-filtro {
+    margin: 5px;
+    z-index: 50;
+}
+
+    .lista-filtro li {
+        float: left;
+        margin-right: 5px;
+    }
+
+
+.lista-respostas {
+}
+
+    .lista-respostas .linha-adm {
+        border: 1px solid red;
+    }
+
+        .lista-respostas .linha-adm div {
+            background-color: red;
+            color: white;
+        }
+
+    .lista-respostas .linha-cliente {
+        border: 1px solid green;
+    }
+
+        .lista-respostas .linha-cliente div {
+            color: white;
+            background-color: green;
+        }

@@ -1,0 +1,219 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageCarrinho.master.cs" Inherits="MasterPage" %>
+
+<%@ Register Src="~/ZepolControl/Rodape.ascx" TagPrefix="uc1" TagName="Rodape" %>
+<%@ Register Src="~/ZepolControl/Cabecalho.ascx" TagPrefix="uc1" TagName="Cabecalho" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
+<!--<![endif]-->
+
+<head runat="server">
+
+    <title></title>
+    <asp:Literal runat="server" ID="litMetaTags">
+    </asp:Literal>
+
+    <asp:Literal runat="server" ID="litAnalytics"></asp:Literal>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta content="pt-br" http-equiv="content-language" />
+    <!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.png" />
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css" />
+    <link href="/css/jquery.jqzoom.css" rel="stylesheet" type="text/css" />
+    <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.css" />
+    <link rel="stylesheet" href="assets/css/shop.style.css" />
+    <%--   <link href="css/fotorama.css" rel="stylesheet" />    --%>
+
+    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/shop.style.css" />
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="/assets/plugins/line-icons/line-icons.css" />
+    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/assets/plugins/scrollbar/src/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.css" />
+    <link rel="stylesheet" href="/assets/plugins/revolution-slider/rs-plugin/css/settings.css" />
+    <link rel="stylesheet" href="/assets/plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css" />
+
+    <link rel="stylesheet" href="css/jquery.jqzoom.css" type="text/css" />
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="/assets/css/theme-colors/default.css" />
+    <link rel="stylesheet" href="/assets/css/app.css" />
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="/assets/css/custom.css" />
+
+    <link rel="stylesheet" href="/css/plus.css" />
+    <link rel="stylesheet" href="/assets/css/slider.css" />
+    <link rel="stylesheet" href="assets/css/custom_desenvolvimento.css" />
+    <!-- Fim Aqui vai os links css -->
+
+    <asp:Literal runat="server" ID="litGetSocial"></asp:Literal>
+
+    <script>
+        var baseUrl = "<%= MetodosFE.BaseURL %>/";
+    </script>
+</head>
+<body class="header-fixed">
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" EnableCdn="true" runat="server">
+        </asp:ScriptManager>
+        <div class="wrapper">
+            <asp:Literal runat="server" ID="litErro"></asp:Literal>
+            <uc1:Cabecalho runat="server" ID="Cabecalho" />
+
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+
+            <uc1:Rodape runat="server" ID="Rodape" />
+        </div>
+
+
+        <!-- Aqui vai os links js -->
+        <!-- JS Global Compulsory -->
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js"></script>
+        <%--             <script src="<%= MetodosFE.BaseURL %>/js/fotorama.js"></script>--%>
+
+        <!-- Aqui vai os links js -->
+        <script src="<%= MetodosFE.BaseURL %>/assets/plugins/jquery/jquery-migrate.min.js"></script>
+        <script src="<%= MetodosFE.BaseURL %>/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+        <script src="<%= MetodosFE.BaseURL %>/assets/js/custom_desenvolvimento.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js" type="text/javascript"></script>
+
+        <script src="https://code.angularjs.org/1.4.1/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.4.1/angular-resource.min.js"></script>
+        <script src="https://code.angularjs.org/1.4.1/angular-animate.min.js"></script>
+        <script src="https://code.angularjs.org/1.4.1/i18n/angular-locale_pt-br.js"></script>
+        <script src="<%= MetodosFE.BaseURL %>/js/ngMask.min.js"></script>
+        <script src="<%= MetodosFE.BaseURL %>/js/Angular/keepr.js"></script>
+
+        <script src="<%= MetodosFE.BaseURL %>/js/Angular/controleCarrinho.js"></script>
+        <script src="<%= MetodosFE.BaseURL %>/js/Angular/controleOrcamento.js"></script>
+        <script src="<%= MetodosFE.BaseURL %>/js/Angular/controleEndereco.js"></script>
+        <script src="<%= MetodosFE.BaseURL %>/js/Angular/controleSimulacaoFrete.js"></script>
+        <script src="<%= MetodosFE.BaseURL %>/js/Angular/controleListaDesejo.js"></script>
+
+        <!-- JS Implementing Plugins -->
+        <script src="<%= MetodosFE.BaseURL %>/assets/plugins/back-to-top.js"></script>
+        <script src="<%= MetodosFE.BaseURL %>/assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
+        <script src="<%= MetodosFE.BaseURL %>/assets/plugins/sky-forms/version-2.0.1/js/jquery.validate.min.js"></script>
+        <script src="<%= MetodosFE.BaseURL %>/assets/plugins/jquery-steps/build/jquery.steps.js"></script>
+
+        <!-- Scrollbar -->
+        <script src="<%= MetodosFE.BaseURL %>/assets/plugins/scrollbar/src/jquery.mousewheel.js"></script>
+        <script src="<%= MetodosFE.BaseURL %>/assets/plugins/scrollbar/src/perfect-scrollbar.js"></script>
+
+        <!-- JS Customization -->
+
+        <!-- JS Page Level -->
+        <script src="<%= MetodosFE.BaseURL %>/assets/js/shop.app.js"></script>
+        <script src="<%= MetodosFE.BaseURL %>/assets/js/forms/page_login.js"></script>
+        <script src="<%= MetodosFE.BaseURL %>/assets/js/plugins/stepWizard.js"></script>
+        <script src="<%= MetodosFE.BaseURL %>/assets/js/forms/product-quantity.js"></script>
+        <script src="<%= MetodosFE.BaseURL %>/assets/js/plugins/owl-carousel.js"></script>
+
+        <script src="<%= MetodosFE.BaseURL %>/assets/js/highligther.js"></script>
+
+        <script src="<%= MetodosFE.BaseURL %>/js/jquery.jqzoom-core.js" type="text/javascript"></script>
+
+        <script src="<%= MetodosFE.BaseURL %>/assets/js/custom_desenvolvimento.js"></script>
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+
+                $('.jqzoom').jqzoom({
+                    zoomType: 'standard', // zoom type           
+                    lens: true,
+                    preloadImages: false,
+                    alwaysOn: false,
+                    zoomWidth: 300,
+                    zoomHeight: 300
+                });
+            });
+
+        </script>
+
+        <%--    <script>
+            $('.fotorama')
+                .on('fotorama:fullscreenenter fotorama:fullscreenexit', function (e, fotorama) {
+                    if (e.type === 'fotorama:fullscreenenter') {
+                        // Options for the fullscreen
+                        fotorama.setOptions({
+                            fit: 'none'
+                        });
+                    } else {
+                        // Back to normal settings
+                        fotorama.setOptions({
+                            fit: 'contain'
+                        });
+                    }
+                })
+                .fotorama();
+        </script>--%>
+        <!--JS BOTÃO PESQUISA-->
+        <script src="<%= MetodosFE.BaseURL%>/assets/js/forms/page_login.js"></script>
+        <script src="<%= MetodosFE.BaseURL%>/assets/js/forms/page_contact_form.js"></script>
+        <script>
+            jQuery(document).ready(function () {
+                App.init();
+                OwlCarousel.initOwlCarousel();
+                PageContactForm.initPageContactForm();
+
+            });
+        </script>
+
+        <!--[if lt IE 9]>
+	<script src="<%= MetodosFE.BaseURL %>/assets/plugins/respond.js"></script>
+	<script src="<%= MetodosFE.BaseURL %>/assets/plugins/html5shiv.js"></script>
+	<script src="<%= MetodosFE.BaseURL %>/assets/plugins/sky-forms/version-2.0.1/js/sky-forms-ie8.js"></script>
+<![endif]-->
+
+        <!--[if lt IE 10]>
+	<script src="<%= MetodosFE.BaseURL %>/assets/plugins/sky-forms/version-2.0.1/js/jquery.placeholder.min.js"></script>
+<![endif]-->
+
+        <script type="text/javascript" src="<%= MetodosFE.BaseURL%>/js/jquery.dotdotdot.min.js"></script>
+
+        <script type="text/jscript">
+            $(window).load(function () {
+                setTimeout(function () {
+                    $.getScript('<%= MetodosFE.BaseURL %>/js/dotdotConfig.js?' + Math.random());
+                }, 0);
+            });
+        </script>
+
+
+        <script src="<%= MetodosFE.BaseURL %>/js/jquery.inputmask.min.js" type="text/javascript"></script>
+
+        <script>
+            $(document).ready(function () {
+                $(".Telefone").inputmask('(99)9999-9999[9]');
+                $(".numero").maskMoney({ showSymbol: false, decimal: "", precision: 0, thousands: "" });
+
+            });
+        </script>
+    </form>
+</body>
+</html>

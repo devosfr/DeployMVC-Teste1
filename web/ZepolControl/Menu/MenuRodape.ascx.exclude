@@ -1,0 +1,101 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="MenuRodape.ascx.cs" Inherits="ZepolControl_DadosTexto" %>
+<!-- CSS -->
+<%--<link rel="stylesheet" type="text/css" href="<%= BaseURL %>/css/superfish/superfish.css"
+    media="screen" />--%>
+<style type="text/css">
+    div.MenuRodape
+    {
+        width: 417px;
+        height: 176px;
+        position: relative;
+    }
+    
+    div.MenuRodape div
+    {
+        width: 208px;
+        float: left;
+    }
+    .MenuRodape div h2
+    {
+        font: normal bold 14px Calibri;
+        color: White;
+        text-align: left;
+    }
+    .MenuRodape div a
+    {
+        font: normal lighter 16px Calibri;
+        color: White;
+    }
+    
+    
+    ul.menuRodape
+    {
+        width: 100%;
+    }
+    
+    ul.menuRodape li
+    {
+        vertical-align: middle;
+        text-align: left; /*width:127px;*/
+        position: relative;
+        font: normal lighter 14px Calibri;
+        color: White;
+        height:19px;
+    }
+</style>
+<!-- JS -->
+<%--<script type="text/javascript" src="<%= BaseURL %>/js/superfish.js"></script>--%>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('.menuRodape>li').each(function () {
+            //Or: $.each( $("p"), function() {
+            if ($(this).children('a').attr('href') == window.location.href) {
+                $(this).attr('class', 'ativo');
+            }
+        });
+
+        //        $('.botaoMenuRodape').mouseenter(function () {
+        //            $(this).children('a').css('color', 'white');
+        //        });
+        //        $('.botaoMenuRodape').mouseleave(function () {
+        //            $(this).children('a').css('color', '#006533');
+        //        });
+    });
+</script>
+<!-- HTML do menuRodape -->
+<%--Home
+A Empresa
+Cotação
+Contato
+51 | 8279 0704
+dssegurodecarga@gmail.com
+
+Seguros
+RCTR-C
+RCF-DC
+RCTR-VI
+RCTA-C
+RCA-C--%>
+<div class="MenuRodape divLimpa">
+    <div style="width:209px;">
+<ul class="menuRodape">
+    
+    <li><a href="<%= BaseURL %>/Texto/PoliticaVenda">Política de Venda</a></li>
+    <li><a href="<%= BaseURL %>/Texto/TrocaIndenizacao">Troca/Indenização</a></li>
+    <li><a href="<%= BaseURL %>/Texto/PrazosCondicaoFrete">Prazos, Condições e Frete</a></li>
+    <li><a href="<%= BaseURL %>/Texto/Promocoes">Promoções</a></li>
+    <li><a href="<%= BaseURL %>/Texto/Duvidas.aspx">Central de Atendimento</a></li>
+</ul>
+    </div>
+    <div>
+        <ul class="menuRodape">
+        <li><a href="<%= BaseURL %>/Texto/ComoComprar">Como Comprar </a></li>
+    <li><a href="<%= BaseURL %>/Texto/Importante">Importante</a></li>
+    <li><a href="<%= BaseURL %>/Texto/FacaPedido">Faça seu Pedido</a></li>
+    <li><a href="<%= BaseURL %>/Texto/FormasPagamento">Formas de Pagamento</a></li>
+    <li><a href="<%= BaseURL %>/Texto/CompraSegura">Compra Segura</a></li>
+        </ul>
+    </div>
+
+</div>

@@ -1,0 +1,194 @@
+<%@ Page Title="" Language="C#" MasterPageFile="~/Controle/GerenciadorNovo.master"
+    AutoEventWireup="true" CodeFile="Categorias.aspx.cs" Inherits="Controle_Cadastro_Categorias" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="cphConteudo" runat="Server">
+    <script type="text/javascript">
+        $(document).ready(
+				function () {
+				    var secao = $('#hfSecao').val();
+				    if (secao != "") {
+				        if (secao == "C") {
+				            $('#divDados').show();
+				            $('#tituloCadastro').css('color', '#FFF');
+				            $('#divLista').hide();
+
+				        }
+				        else {
+				            $('#divDados').hide();
+				            $('#divLista').show();
+				            $('#tituloBusca').css('color', '#FFF');
+				        }
+				    }
+				    else if (window.location.href.indexOf("Codigo") != -1) {
+				        $('#divDados').show();
+
+				        $('#divLista').hide();
+				        $('#tituloBusca').css('display', 'none');
+
+				    }
+				    else {
+				        $('#divDados').hide();
+				        $('#divLista').show();
+				        $('#tituloBusca').css('color', '#FFF');
+				    }
+				    $(".decimal").maskMoney({ showSymbol: false, decimal: ",", thousands: "" });
+
+				    $('#tituloCadastro').click(function () {
+				        $('#divLista').stop().slideToggle(function () {
+				            if ($('#divLista').is(':visible')) {
+				                $('#tituloBusca').css('color', '#FFF');
+				                $('#hfSecao').val("");
+				            }
+
+				            else
+				                $('#tituloBusca').css('color', 'rgb(122, 122, 122)');
+
+
+				        });
+				        $('#divDados').stop().slideToggle(function () {
+				            if ($('#divDados').is(':visible')) {
+				                $('#tituloCadastro').css('color', '#FFF');
+				                $('#hfSecao').val("C");
+				            }
+
+				            else
+				                $('#tituloCadastro').css('color', 'rgb(122, 122, 122)');
+				        });
+				    });
+				    $('#tituloBusca').click(function () {
+				        $('#divLista').stop().slideToggle(function () {
+				            if ($('#divLista').is(':visible')) {
+				                $('#tituloBusca').css('color', '#FFF');
+				                $('#hfSecao').val("");
+				            }
+				            else {
+				                $('#tituloBusca').css('color', 'rgb(122, 122, 122)');
+				            }
+				        });
+				        $('#divDados').stop().slideToggle(function () {
+				            if ($('#divDados').is(':visible')) {
+				                $('#hfSecao').val("C");
+				                $('#tituloCadastro').css('color', '#FFF');
+				            }
+				            else {
+				                $('#tituloCadastro').css('color', 'rgb(122, 122, 122)');
+				                $('#hfSecao').val("");
+				            }
+				        });
+				    });
+
+				});
+
+
+    </script>
+    <asp:HiddenField ID="hfSecao" ClientIDMode="Static" runat="server" />
+    <asp:Literal runat="server" ID="litErro"></asp:Literal>
+    <h1 class="TituloPagina">
+        Categorias
+    </h1>
+    <h1 id="tituloCadastro" class="TituloSecao">
+        Cadastro
+    </h1>
+    <div id="divDados" runat="server" clientidmode="Static">
+        <%--                
+        public int id { get; set; }
+        public string dscategoria { get; set; }
+        public int idramo { get; set; }
+        public int idsegmento { get; set; }
+        public string dssegmento { get; set; }
+        public string dsramo { get; set; }
+        --%>
+        <ul>
+            <li>
+                <asp:Label ID="lblCodigo" runat="server" Text="Código:" CssClass="nomeCampo"></asp:Label>
+                <asp:TextBox ID="txtID" Width="74px" Text='<%# Bind("id") %>' runat="server" Enabled="False"></asp:TextBox>
+            </li>
+            <li>
+                <asp:Label ID="Label2" runat="server" Text="Nome Categoria:" CssClass="nomeCampo"></asp:Label>
+                <asp:TextBox ID="txtNome" Width="300px" Text='<%# Bind("nome") %>' runat="server"></asp:TextBox></li>
+            <li>
+                <asp:Label ID="Label5" runat="server" Text="Ramo:" CssClass="nomeCampo"></asp:Label>
+                <asp:DropDownList ID="ddlRamo" runat="server" Width="300px">
+                </asp:DropDownList>
+            </li>
+            <li>
+                <asp:Label ID="Label3" runat="server" Text="Segmento Filho:" CssClass="nomeCampo"></asp:Label>
+                <asp:DropDownList ID="ddlSegmento" runat="server" Width="300px">
+                </asp:DropDownList>
+            </li>
+        </ul>
+        <div>
+            <asp:Button ID="btnSalvar" CssClass="EstiloBotao" runat="server" Text="Salvar" OnClick="btnSalvar_Click" />
+            <asp:Button ID="btnAlterar" CssClass="EstiloBotao" CausesValidation="true" runat="server"
+                Text="Alterar" OnClick="btnAlterar_Click" />
+            <asp:Button ID="btnCancelar" CssClass="EstiloBotao" runat="server" Text="Cancelar"
+                OnClick="btnCancelar_Click" CausesValidation="False" />
+        </div>
+    </div>
+    <h1 id="tituloBusca" class="TituloSecao" >
+        Busca
+    </h1>
+    <div id="divLista" runat="server" clientidmode="Static">
+        <div>
+            <ul class="listaCampoBusca">
+                <li>
+                    <asp:Label ID="Label4" runat="server" CssClass="nomeCampo" Text="ID"></asp:Label><asp:TextBox
+                        runat="server" ID="txtBuscaID"></asp:TextBox></li>
+                <li>
+                    <asp:Label runat="server" Text="Nome" CssClass="nomeCampo"></asp:Label><asp:TextBox
+                        runat="server" ID="txtBuscaNome"></asp:TextBox></li>
+                <li>
+                    <asp:Label ID="Label1" runat="server" Text="Segmento Filho" CssClass="nomeCampo"></asp:Label><asp:DropDownList
+                        ID="ddlBuscaSegmento" runat="server" Width="300px">
+                    </asp:DropDownList>
+                </li>
+            </ul>
+            <asp:Button ID="btnPesquisar" CssClass="EstiloBotao" runat="server" Text="Pesquisar"
+                OnClick="btnPesquisar_Click" CausesValidation="False" />
+        </div>
+        <div class="idFiltro clearfix">
+            <h2 class="TituloResultadoPesquisa">
+                Resultado da pesquisa</h2>
+            <div class="idResultado">
+                <asp:GridView ID="gvSegmento" runat="server" AllowPaging="True" AutoGenerateColumns="False"
+                    PageSize="20" DataKeyNames="id" CellPadding="4" EmptyDataText="Não existe dados."
+                    ForeColor="Black" GridLines="Vertical" OnRowDeleting="gvSegmento_RowDeleting"
+                    AllowSorting="True" OnSorting="gvSegmento_Sorting" OnRowDataBound="gvSegmento_RowDataBound"
+                    OnPageIndexChanging="gvSegmento_PageIndexChanging" OnRowEditing="gvDados_RowEditing"
+                    BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px">
+                    <FooterStyle BackColor="#CCCC99" />
+                    <RowStyle BackColor="#DFDFDF" />
+                    <Columns>
+                        <asp:BoundField DataField="id" HeaderText="Cod. Categoria" InsertVisible="False"
+                            ReadOnly="True" SortExpression="id" />
+                        <asp:BoundField DataField="nome" HeaderText="Nome" InsertVisible="False" ReadOnly="True"
+                            SortExpression="nome" />
+                        <asp:BoundField DataField="nomeSegmentoFilho" HeaderText="Segmento" InsertVisible="False"
+                            ReadOnly="True" SortExpression="nomeSegmentoFilho" />
+                        <asp:CommandField ButtonType="Image" EditImageUrl="~/Controle/comum/img/BotoesGrid/icoEditar.jpg"
+                            EditText="Editar" HeaderText="" ShowEditButton="True" />
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:ImageButton runat="server" ID="btnCancel" CausesValidation="False" ImageUrl="~/Controle/comum/img/BotoesGrid/icoExcluir.jpg"
+                                    OnClientClick="return confirm('Deseja mesmo apagar esta categoria, incluindo todos os produtos e demais itens relacionados a ela?')"
+                                    CommandName="Delete"></asp:ImageButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                    <AlternatingRowStyle BackColor="White" />
+                </asp:GridView>
+            </div>
+        </div>
+    </div>
+    <!--<asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:HyperLink ID="hplEditar" runat="server" NavigateUrl='<%# Eval("id", "Categorias.aspx?Codigo={0}") %>'>
+                                    <asp:Image ID="imgEditar" ToolTip="Editar" ImageUrl="~/Controle/comum/img/BotoesGrid/icoEditar.jpg"
+                                        runat="server" />
+                                </asp:HyperLink>
+                            </ItemTemplate>
+                        </asp:TemplateField>-->
+</asp:Content>

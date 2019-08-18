@@ -1,0 +1,119 @@
+﻿/*
+*	Por: Alisson Douglas
+*	Data: 14/02/2008	
+*/
+.idFiltro ul li.edicao-cadastro-editorial label span{
+	width:auto;
+	padding:0 0 0 5px;
+}
+.idFiltro ul li.edicao-cadastro-editorial label textarea{
+	width:545px;	
+	_width:536px;
+}
+.idFiltro ul li.eventos-cadstro-informacoes textarea{
+	width:450px;
+}
+.idFiltro ul li.evento-cadastro-livros input{
+	border:none;
+	margin:0 5px 0 0;
+}
+.idFiltro ul li.evento-pesquisar-periodo{
+	padding:0 0 0 128px;
+	_padding:0 0 0 131px;	
+}
+.idFiltro ul li.livros-cadastro-livros .bt-padrao{
+	height:20px;	
+}
+.idFiltro ul li.livros-cadastro-livros table{
+	margin:20px 0 0 40px;
+	width:500px;
+}
+.idFiltro ul li.livros-cadastro-livros table td input{
+	border:none;
+	margin:0 5px 0 0;
+}
+.idFiltro ul li.livros-cadastro-resenha textarea, .idFiltro ul li.livros-cadastro-infoautor textarea, .idFiltro ul li.livros-cadastro-autorresenha input{
+	width:350px;
+}
+.idFiltro ul li.livros-cadastro-livrosseg table{
+	margin:20px 0 0 40px;
+	width:500px;	
+}
+.idFiltro ul li.livros-cadastro-livrosseg input{
+	border:none;
+	margin:0 5px 0 0;	
+}
+.pesquisaLivros{
+	clear:both;
+	width:600px;	
+}
+.idFiltro ul li.livros-pesquisa-periodo .separador{
+	width:auto;
+	display:inline;
+	float:none;
+}
+.idFiltro ul li.curso-cadastro-tipo .bt-padrao{
+	height:20px;
+}
+.idFiltro ul li.curso-cadastro-tipo select{
+	margin:10px 0 0 177px;
+	width:150px;
+}
+.idFiltro ul li.cursos-cadastro-demaisinfo textarea, .idFiltro ul li.cursos-cadastro-aprecurso textarea{
+	width:400px;
+}
+.idFiltro ul li.cursos-cadastro-link table{
+	margin:20px 0 0 40px;
+	width:500px;
+}
+.idFiltro ul li.cursos-cadastro-link input{
+	border:none;
+	margin:0 5px 0 0;	
+}
+.idFiltro ul li.galeria-cadastro-midia table{
+	margin:20px 0 0 40px;
+	width:500px;	
+}
+.idFiltro ul li.galeria-cadastro-midia input{
+	margin:0 5px 0 0;
+	border:none;
+}
+.idFiltro ul li.galeria-cadastro-nivmidia{
+	padding:10px 0 0 0;
+}
+.label{
+	font:bold 11px Tahoma, Arial, Verdana;
+	padding:10px 0 0 30px;
+	display:block;
+}
+.idFiltro ul li.galeria-cadastro-associar table{
+	margin:10px 0 0 40px;
+	width:500px;
+}
+.idFiltro ul li.galeria-cadastro-associar input{
+	margin:0 5px 0 0;
+	border:none;
+}
+.idFiltro ul li .galeria-cadastro-botoes{ width:600px;}
+.idFiltro ul li .galeria-cadastro-botoes input{ height:20px;}
+.idFiltro ul li.galeria-pesquisar-midia input{
+	margin:0 5px 0 0;
+	border:none;
+}
+.idFiltro ul li.galeria-pesquisa-canais label span{
+	display:block;
+	width:80px;
+}
+.idFiltro ul li.galeria-pesquisa-canais table{
+	clear:both;
+	margin:10px 0 0 40px;
+	width:500px;
+}
+.idFiltro ul li.galeria-pesquisa-canais input{
+	margin:0 5px 0 0;
+	border:none;
+}
+.idFiltro ul li.galeria-pesquisa-periodo{
+	
+}
+.idFiltro ul li label span.span-dados{ width:auto; }

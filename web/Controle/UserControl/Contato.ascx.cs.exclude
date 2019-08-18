@@ -1,0 +1,96 @@
+﻿using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Linq;
+using NHibernate.Linq;
+using System.Linq.Dynamic;
+using System.Collections.Generic;
+using Modelos;
+
+public partial class ZepolControl_DadosTexto : System.Web.UI.UserControl
+{
+    private Repository<Contato> repoContato
+    {
+        get
+        {
+            return new Repository<Contato>(NHibernateHelper.CurrentSession);
+        }
+    }
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    #region Guardamos o Código no ViewState
+    public int Codigo
+    {
+        get
+        {
+            if (ViewState["Codigo"] == null) ViewState["Codigo"] = 0;
+            return (Int32)ViewState["Codigo"];
+        }
+        set { ViewState["Codigo"] = value; }
+    }
+    #endregion
+    public void carregarContato(int idContato)
+    {
+        if (idContato > 0)
+        {
+            Codigo = idContato;
+            Contato contato = repoContato.FindBy(Codigo);
+            txtEmail.Text = contato.email1;
+
+            txtFone1.Text = contato.fone1;
+            txtFone2.Text = contato.fone2;
+        }
+    }
+
+    public int salvarContato()
+    {
+        validaCampos();
+        Contato contato = new Contato();// = new ContatoVO();
+        contato.fone1 = txtFone1.Text.Replace('_', ' ').Trim();
+        contato.fone2 = txtFone2.Text.Replace('_', ' ').Trim();
+        contato.email1 = txtEmail.Text;
+            repoContato.Add(contato);
+
+        return contato.Id;
+
+    }
+    public void atualizarContato()
+    {
+        validaCampos();
+        Contato contato = repoContato.FindBy(Codigo);// = new ContatoVO();
+        contato.fone1 = txtFone1.Text.Replace('_', ' ').Trim();
+        contato.fone2 = txtFone2.Text.Replace('_', ' ').Trim();
+
+        contato.email1 = txtEmail.Text;
+        repoContato.Update(contato);
+    }
+
+    public void validaCampos()
+    {
+        string mensagemErro = "";
+        if (String.IsNullOrEmpty(txtEmail.Text))
+            mensagemErro += "E-mail <br/>";
+        if (String.IsNullOrEmpty(txtFone1.Text))
+            mensagemErro += "Fone 1 <br/>";
+        if (!String.IsNullOrEmpty(mensagemErro)) 
+        {
+            throw new Exception("Verifique os seguintes campos: <br/>" + mensagemErro);
+        }
+    }
+
+    public void excluirContato() 
+    {
+        if (Codigo != 0)
+            repoContato.Delete(repoContato.FindBy(Codigo));
+    }
+
+}

@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Configuracoes.xsd" password="123">
+  <telas>
+    <grupo nome="Configurações">
+      <tela nome="Analytics" multidocumento="false" >
+        <campo nome="Código" destino="txtDescricao"></campo>
+      </tela>
+      <tela nome="MetaTags Principais" multidocumento="false" >
+        <campo nome="MetaTags Sociais" destino="txtMeta"></campo>
+        <campo nome="Código" destino="txtDescricao"></campo>
+      </tela>
+      <tela nome="MetaTags por Página" multidocumento="true" >
+        <campo nome="Link" destino="txtNome"></campo>
+        <campo nome="Código" destino="txtDescricao"></campo>
+      </tela>
+      <tela nome="Configurações de SMTP" multidocumento="false" >
+        <campo nome="SMTP" destino="txtNome"></campo>
+        <campo nome="E-mail" destino="txtReferencia"></campo>
+        <campo nome="Porta" destino="txtValor"></campo>
+        <campo nome="Senha" destino="txtOrdem"></campo>
+      </tela>
+    </grupo>
+    <grupo nome="Configurações de Loja">
+      <tela nome="Informações de Correio" multidocumento="false" >
+        <campo nome="Contrato" destino="txtNome"></campo>
+        <campo nome="Senha" destino="txtReferencia"></campo>
+        <campo nome="Aviso Rec. (S/N)" destino="txtValor"></campo>
+        <campo nome="CEP" destino="txtOrdem" classe="CEP"></campo>
+      </tela>
+    </grupo>
+    <grupo nome="Formas de Pagamento">
+      <tela nome="Dados do PagSeguro" multidocumento="false" >
+        <campo nome="E-mail" destino="txtNome"></campo>
+        <campo nome="Token" destino="txtReferencia"></campo>
+      </tela>
+      <tela nome="Bancos para Depósito" multidocumento="true" >
+        <campo nome="Banco" destino="txtNome"></campo>
+        <campo nome="Informações" destino="txtDescricao"></campo>
+        <campo nome="Visível" destino="DropVisivel"></campo>
+        <uplFoto TamFotoGrW="248"  TamFotoGrH="68" TamFotoPqW="248" TamFotoPqH="68"  QtdeFotos="1" Qualidade="80" Configuracao="2"  />
+      </tela>
+      <tela nome="Compra Finalizada - Boleto" multidocumento="false" >
+        <campo nome="Título" destino="txtNome"></campo>
+        <campo nome="Texto" destino="txtDescricao"></campo>
+      </tela>
+      <tela nome="Compra Finalizada - Depósito" multidocumento="false" >
+        <campo nome="Título" destino="txtNome"></campo>
+        <campo nome="Texto" destino="txtDescricao"></campo>
+      </tela>
+      <tela nome="Compra Finalizada - Texto" multidocumento="false" >
+        <campo nome="Título" destino="txtNome"></campo>
+        <campo nome="Texto" destino="txtDescricao"></campo>
+      </tela>
+      <tela nome="E-mail - Boleto" multidocumento="false" >
+        <campo nome="E-mail" destino="txtReferencia"></campo>
+      </tela>
+      <tela nome="	E-mail - Depósito" multidocumento="false" >
+        <campo nome="E-mail" destino="txtReferencia"></campo>
+      </tela>
+    </grupo>
+    <grupo nome="Processo de Cadastro">
+      <tela nome="Login - Boas Vindas" multidocumento="false" >
+        <campo nome="Título" destino="txtNome"></campo>
+        <campo nome="Texto" destino="txtDescricao"></campo>
+      </tela>
+      <tela nome="Login e Registro - Texto" multidocumento="false" >
+        <campo nome="Título" destino="txtNome"></campo>
+        <campo nome="Texto" destino="txtDescricao"></campo>
+      </tela>
+      <tela nome="Recuperar Senha - Texto" multidocumento="false" >
+        <campo nome="Título" destino="txtNome"></campo>
+        <campo nome="Texto" destino="txtDescricao"></campo>
+      </tela>
+    </grupo>
+    <grupo nome="Institucional">
+      <tela nome="Animação" multidocumento="true" >
+        <campo nome="Nome" destino="txtNome"></campo>
+        <campo nome="Link" destino="txtReferencia"></campo>
+        <campo nome="Ordem" destino="txtOrdem"></campo>
+        <campo nome="Texto" destino="txtDescricao"></campo>
+        <campo nome="Visível" destino="DropVisivel"></campo>
+        <uplFoto TamFotoGrW="1170" TamFotoGrH="350"  TamFotoPqW="318" TamFotoPqH="100" Qualidade="80" Configuracao="2" QtdeFotos="1" />
+      </tela>
+      <tela nome="Anúncios Home" multidocumento="true" >
+        <campo nome="Título parte 1" destino="txtNome"></campo>
+        <campo nome="Título parte 2" destino="txtReferencia"></campo>
+        <campo nome="SubTitulo" destino="txtValor"></campo>
+        <campo nome="Link" destino="txtOrdem"></campo>
+        <campo nome="Texto" destino="txtDescricao"></campo>
+        <campo nome="Visível" destino="DropVisivel"></campo>
+        <uplFoto TamFotoGrW="400" TamFotoGrH="170"  TamFotoPqW="100" TamFotoPqH="100" Qualidade="80" Configuracao="2" QtdeFotos="1" />
+      </tela>
+      <tela nome="Banners Home" multidocumento="true" >
+        <campo nome="Título" destino="txtNome"></campo>
+        <campo nome="Visível" destino="DropVisivel"></campo>
+        <uplFoto TamFotoGrW="570" TamFotoGrH="150"  TamFotoPqW="570" TamFotoPqH="150" Qualidade="80" Configuracao="2" QtdeFotos="1" />
+      </tela>
+      <tela nome="Dúvidas" multidocumento="true" >
+        <campo nome="Título" destino="txtNome"></campo>
+        <campo nome="Texto" destino="txtDescricao"></campo>
+        <campo nome="Visível" destino="DropVisivel"></campo>
+      </tela>
+      <tela nome="Dúvidas - Texto" multidocumento="false" >
+        <campo nome="Título" destino="txtNome"></campo>
+        <campo nome="Texto" destino="txtDescricao"></campo>
+      </tela>
+      <tela nome="Rodapé" multidocumento="false" >
+        <campo nome="Telefone" destino="txtNome"></campo>
+        <campo nome="E-mail" destino="txtReferencia"></campo>
+      </tela>
+      <tela nome="Notícias" multidocumento="true" >
+        <campo nome="Titulo" destino="txtNome"></campo>
+        <campo nome="Texto" destino="txtDescricao"></campo>
+        <campo nome="Visível" destino="DropVisivel"></campo>
+        <campo nome="Data" destino="txtData"></campo>
+        <uplFoto TamFotoGrW="66" TamFotoGrH="66"  TamFotoPqW="66" TamFotoPqH="66" Qualidade="80" Configuracao="2" QtdeFotos="1" />
+      </tela>
+      <tela nome="Sobre" multidocumento="false" >
+        <campo nome="Titulo" destino="txtNome"></campo>
+        <campo nome="Texto" destino="txtDescricao"></campo>
+      </tela>
+      <tela nome="Contato" multidocumento="false" >
+        <campo nome="Titulo" destino="txtNome"></campo>
+        <campo nome="E-mail" destino="txtReferencia"></campo>
+        <campo nome="Texto" destino="txtResumo"></campo>
+        <campo nome="Mapa" destino="txtDescricao"></campo>
+      </tela>
+    </grupo>
+    <grupo nome="Redes Sociais">
+      <tela nome="Facebook" multidocumento="false" >
+        <campo nome="Link" destino="txtNome"></campo>
+      </tela>
+      <tela nome="Instagram" multidocumento="false" >
+        <campo nome="Link" destino="txtNome"></campo>
+      </tela>
+    </grupo>
+  </telas>
+</settings>

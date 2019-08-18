@@ -1,0 +1,22 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="MenuAreaUsuario.ascx.cs"
+    Inherits="ZepolControl_DadosTexto" %>
+
+
+<section class="meio">
+	<div class="right conteudo_lateral">
+		<h3>Bem vindo <%=NomeUsuario %>!</h3>
+		<div class="cadastro">
+			<h2>Meus Dados</h2>
+			<h4>Aqui estão listados todos os seus pedidos realizados e suas informações da conta.</h4>
+			<br />
+			<div class="menu_meus_dados" style="">
+				<ul>
+					<li><a href="<%=MetodosFE.BaseURL %>/AreaDoUsuario/DadosUsuario.aspx">Dados do Usuário</a></li>
+					<li><a href="<%=MetodosFE.BaseURL %>/AreaDoUsuario/ListaPedidos.aspx">Lista de Pedidos</a></li>
+					<li><a href="<%=MetodosFE.BaseURL %>/AreaDoUsuario/AlterarSenha.aspx">Alterar Senha</a></li>
+				</ul>
+			</div>		
+			
+		</div>
+	</div>
+</section>

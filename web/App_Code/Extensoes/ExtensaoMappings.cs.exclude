@@ -1,0 +1,42 @@
+﻿using System;
+using System.Data;
+using System.Configuration;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Collections.Generic;
+using System.Text;
+using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Testing.Values;
+using System.Linq;
+using FluentNHibernate;
+
+static class MappingHelper
+    {
+    public static FluentMappingsContainer AddFromAssemblyOf<T>(
+        this FluentMappingsContainer mappings,
+        Predicate<Type> where)
+    {
+        if (where == null)
+            return mappings.AddFromAssemblyOf<T>();
+
+        var mappingClasses = typeof(T).Assembly.GetExportedTypes()
+            .Where(x => typeof(IMappingProvider).IsAssignableFrom(x)
+                && where(x));
+
+        foreach (var type in mappingClasses)
+        {
+            mappings.Add(type);
+        }
+
+
+        return mappings;
+    }
+    }
+
+
